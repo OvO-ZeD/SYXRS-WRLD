@@ -1,36 +1,54 @@
+// app/components/ShirtViewer.tsx
+
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import {
+  Center,
+  Environment,
+  OrbitControls,
+  useGLTF,
+} from "@react-three/drei";
 import { Suspense } from "react";
 
 function ShirtModel() {
-  const { scene } = useGLTF("/models/syxrs-shirt.glb");
+  const { scene } = useGLTF("/models/first-product.glb");
 
   return (
-    <primitive
-      object={scene}
-      scale={2.4}
-      position={[0, -1.2, 0]}
-      rotation={[0, 0, 0]}
-    />
+    <Center>
+      <primitive
+        object={scene}
+        scale={1.15}
+        position={[0, -0.25, 0]}
+        rotation={[0, 0.15, 0]}
+      />
+    </Center>
   );
 }
 
 export default function ShirtViewer() {
   return (
-    <div className="h-[560px] w-full overflow-hidden rounded-[2rem] bg-black/40">
-      <Canvas camera={{ position: [0, 0.8, 4], fov: 35 }}>
+    <div className="h-[420px] w-full overflow-hidden rounded-[2rem] bg-black/30 md:h-[560px]">
+      <Canvas camera={{ position: [0, 0, 8.5], fov: 28 }}>
         <Suspense fallback={null}>
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[4, 5, 4]} intensity={2.2} />
+          <ambientLight intensity={1.1} />
+
+          <directionalLight
+            position={[3, 4, 4]}
+            intensity={2.2}
+          />
+
           <Environment preset="city" />
+
           <ShirtModel />
+
           <OrbitControls
             enablePan={false}
             enableZoom={true}
+            minDistance={6}
+            maxDistance={11}
             autoRotate={true}
-            autoRotateSpeed={1}
+            autoRotateSpeed={0.7}
           />
         </Suspense>
       </Canvas>
@@ -38,4 +56,4 @@ export default function ShirtViewer() {
   );
 }
 
-useGLTF.preload("/models/syxrs-shirt.glb");
+useGLTF.preload("/models/first-product.glb");

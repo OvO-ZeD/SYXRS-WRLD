@@ -73,10 +73,7 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030303] text-white">
       <nav className="fixed left-1/2 top-5 z-50 flex w-[92%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-black/50 px-5 py-4 backdrop-blur-2xl">
-        <a
-          href="#"
-          className="text-lg font-black tracking-[0.35em] md:text-xl"
-        >
+        <a href="#" className="text-lg font-black tracking-[0.35em] md:text-xl">
           SYXRS
         </a>
 
@@ -107,7 +104,7 @@ export default function Home() {
               DROP 001 • AFTER DARK
             </p>
 
-            <h1 className="text-6xl font-black leading-[0.92] tracking-[0.08em] md:text-8xl lg:text-9xl">
+            <h1 className="text-5xl font-black leading-[0.92] tracking-[0.06em] sm:text-6xl md:text-8xl lg:text-9xl">
               SYXRS
               <br />
               WRLD
@@ -118,8 +115,8 @@ export default function Home() {
             </p>
 
             <p className="mt-6 max-w-xl text-base leading-8 text-zinc-400">
-              Toronto-born athletic streetwear for midnight lifts, street
-              motion, and the next generation building under pressure.
+              Toronto-born athletic streetwear for midnight lifts, street motion,
+              and the next generation building under pressure.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -167,7 +164,7 @@ export default function Home() {
               <img
                 src={preview.img}
                 alt={preview.title}
-                className="h-[500px] w-full object-cover opacity-80 transition duration-700"
+                className="h-[420px] w-full object-cover opacity-80 transition duration-700 md:h-[500px]"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
@@ -177,7 +174,7 @@ export default function Home() {
               </div>
 
               <div className="absolute bottom-7 left-7 right-7">
-                <h3 className="text-3xl font-black tracking-[0.12em]">
+                <h3 className="text-2xl font-black tracking-[0.1em] md:text-3xl">
                   {preview.title}
                 </h3>
 
@@ -213,7 +210,7 @@ export default function Home() {
             WRLD ACCESS NEWSLETTER
           </p>
 
-          <h2 className="text-4xl font-black md:text-6xl">
+          <h2 className="text-3xl font-black tracking-[0.08em] sm:text-4xl md:text-6xl">
             ENTER THE WRLD
           </h2>
 
@@ -265,7 +262,7 @@ export default function Home() {
             COLLECTION
           </p>
 
-          <h2 className="mb-16 text-center text-4xl font-black tracking-[0.14em] md:text-6xl">
+          <h2 className="mb-16 text-center text-3xl font-black tracking-[0.08em] sm:text-4xl md:text-6xl">
             FEATURED PIECES
           </h2>
 
@@ -275,7 +272,7 @@ export default function Home() {
                 key={product.name}
                 className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06] backdrop-blur-xl"
               >
-                <div className="relative h-[430px] overflow-hidden bg-zinc-900">
+                <div className="relative h-[320px] overflow-hidden bg-zinc-900 md:h-[430px]">
                   <img
                     src={product.img}
                     alt={product.name}
@@ -320,7 +317,7 @@ export default function Home() {
               CONFIGURATOR
             </p>
 
-            <h2 className="text-4xl font-black tracking-[0.08em] md:text-6xl">
+            <h2 className="text-3xl font-black tracking-[0.08em] sm:text-4xl md:text-6xl">
               BUILD YOUR DROP
             </h2>
 
@@ -414,7 +411,7 @@ export default function Home() {
             <ShirtViewer />
 
             <div className="mt-6 text-center">
-              <h3 className="text-3xl font-black">
+              <h3 className="text-2xl font-black md:text-3xl">
                 INTERACTIVE 3D PRODUCT
               </h3>
 
@@ -425,10 +422,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <footer className="border-t border-white/10 px-6 py-10 text-center text-zinc-500">
-        © 2026 SYXRS WRLD • BUILT FROM THE NORTH
-      </footer>
 
       {sizeGuide && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-6 backdrop-blur">
@@ -467,6 +460,10 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      <footer className="border-t border-white/10 px-6 py-10 text-center text-zinc-500">
+        © 2026 SYXRS WRLD • BUILT FROM THE NORTH
+      </footer>
     </main>
   );
 }
