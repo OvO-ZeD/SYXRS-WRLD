@@ -3,35 +3,12 @@
 import ShirtViewer from "./components/ShirtViewer";
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
+import Image from "next/image";
 
 const GOOGLE_FORM_ACTION =
   "https://docs.google.com/forms/d/e/1FAIpQLScCklvzv5Oex-9YObi35eWCWAIp45RyJpGkJNoBtDFe8JavVQ/formResponse";
 
 const GOOGLE_EMAIL_ENTRY = "entry.1935803025";
-
-const products = [
-  {
-    name: "AFTER DARK HOODIE",
-    price: 89,
-    tag: "500 GSM",
-    desc: "Oversized heavyweight hoodie engineered for cold city nights, post-gym motion, and low-light street presence.",
-    img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    name: "MOTION TRAINING TEE",
-    price: 48,
-    tag: "ATHLETIC FIT",
-    desc: "Performance-inspired street tee built for movement, layering, and everyday pressure under neon skies.",
-    img: "https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    name: "NORTHSIDE CARGO",
-    price: 76,
-    tag: "UTILITY",
-    desc: "Structured utility cargo designed with tactical pockets, relaxed stacking, and a dark Toronto silhouette.",
-    img: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1200&auto=format&fit=crop",
-  },
-];
 
 const colors = ["Obsidian", "Bone", "Gunmetal"] as const;
 const sizes = ["S", "M", "L", "XL", "XXL"];
@@ -66,41 +43,49 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [sizeGuide, setSizeGuide] = useState(false);
 
+  const trackEvent = (eventName: string, payload?: Record<string, string>) => {
+    if (typeof window === "undefined") return;
+
+    window.dispatchEvent(
+      new CustomEvent("syxrs:analytics", { detail: { eventName, ...payload } })
+    );
+  };
+
   const selectedPrice = useMemo(() => {
     return size === "XXL" ? 95 : 89;
   }, [size]);
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030303] text-white">
-      <nav className="fixed left-1/2 top-5 z-50 flex w-[92%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-black/50 px-5 py-4 backdrop-blur-2xl">
-        <a href="#" className="text-lg font-black tracking-[0.35em] md:text-xl">
+      <nav className="fixed left-1/2 top-5 z-50 flex w-[92%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-black/50 px-4 py-3 backdrop-blur-2xl sm:px-5 sm:py-4">
+        <a href="#" className="text-base font-black tracking-[0.3em] md:text-xl">
           SYXRS
         </a>
 
         <div className="hidden gap-8 text-xs font-bold tracking-[0.22em] text-zinc-300 md:flex">
-          <a href="#access">ACCESS</a>
-          <a href="#drop">DROP</a>
           <a href="#configurator">CONFIG</a>
+          <a href="#drop">DROP 002</a>
+          <a href="#access">ACCESS</a>
         </div>
 
         <a
           href="#access"
-          className="rounded-full bg-white px-5 py-2 text-xs font-black tracking-[0.15em] text-black transition hover:scale-105"
+          className="rounded-full bg-white px-4 py-2 text-[10px] font-black tracking-[0.15em] text-black transition hover:scale-105 sm:px-5 sm:text-xs"
         >
           JOIN
         </a>
       </nav>
 
-      <section className="relative flex min-h-screen items-center px-6 py-32">
+      <section className="relative flex min-h-screen items-center px-5 py-24 sm:px-6 sm:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(66,0,180,0.42),transparent_35%),radial-gradient(circle_at_82%_28%,rgba(220,25,45,0.28),transparent_38%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.08),transparent_36%)]" />
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
           <motion.div
-            initial={{ opacity: 0, y: 45 }}
+            initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
+            transition={{ duration: 0.8 }}
           >
-            <p className="mb-6 text-xs font-bold tracking-[0.55em] text-zinc-400 md:text-sm">
+            <p className="mb-4 text-xs font-bold tracking-[0.42em] text-zinc-400 sm:tracking-[0.55em]">
               DROP 001 • AFTER DARK
             </p>
 
@@ -110,32 +95,37 @@ export default function Home() {
               WRLD
             </h1>
 
-            <p className="mt-7 max-w-2xl text-lg font-semibold tracking-[0.22em] text-zinc-300 md:text-2xl">
+            <p className="mt-5 max-w-2xl text-base font-semibold tracking-[0.18em] text-zinc-300 sm:text-lg md:text-2xl">
               BUILT FROM THE NORTH
             </p>
 
-            <p className="mt-6 max-w-xl text-base leading-8 text-zinc-400">
+            <p className="mt-4 max-w-xl text-sm leading-7 text-zinc-400 sm:text-base sm:leading-8">
               Toronto-born athletic streetwear for midnight lifts, street motion,
               and the next generation building under pressure.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#access"
-                className="rounded-full bg-white px-9 py-4 text-center font-black text-black transition hover:scale-105"
+                onClick={() => trackEvent("hero_cta_click", { source: "hero_primary" })}
+                className="rounded-full bg-white px-8 py-4 text-center text-sm font-black text-black transition hover:scale-105"
               >
                 JOIN WRLD ACCESS
               </a>
 
+              <p className="text-xs tracking-[0.18em] text-zinc-400 sm:self-center">
+                LIMITED FIRST RUN • ACCESS CLOSES SOON
+              </p>
+
               <a
-                href="#drop"
-                className="rounded-full border border-white/10 bg-white/5 px-9 py-4 text-center font-black text-white transition hover:bg-white/15"
+                href="#configurator"
+                className="rounded-full border border-white/10 bg-white/5 px-8 py-4 text-center text-sm font-black text-white transition hover:bg-white/15"
               >
-                VIEW COLLECTION
+                BUILD DROP 001
               </a>
             </div>
 
-            <div className="mt-12 grid max-w-xl grid-cols-3 gap-3">
+            <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3">
               {["TORONTO", "FOUNDER ACCESS", "DROP 001"].map((item) => (
                 <div
                   key={item}
@@ -150,47 +140,49 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1 }}
-            className="relative overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.05] p-8 backdrop-blur-2xl"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9 }}
+            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl sm:rounded-[3rem] sm:p-6"
           >
-            <div className="relative z-10 flex items-center justify-between text-xs tracking-[0.28em] text-zinc-400">
+            <div className="relative z-10 flex items-center justify-between text-[10px] tracking-[0.22em] text-zinc-400 sm:text-xs">
               <span>LIVE PRODUCT PREVIEW</span>
               <span>DROP 001</span>
             </div>
 
-            <div className="relative mt-8 overflow-hidden rounded-[2rem] bg-black">
-              <img
+            <div className="relative mt-5 overflow-hidden rounded-[1.5rem] bg-black sm:rounded-[2rem]">
+              <Image
                 src={preview.img}
                 alt={preview.title}
-                className="h-[420px] w-full object-cover opacity-80 transition duration-700 md:h-[500px]"
+                width={1200}
+                height={900}
+                className="h-[300px] w-full object-cover opacity-80 transition duration-700 sm:h-[380px] md:h-[450px]"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
-              <div className="absolute left-6 top-6 rounded-full bg-white px-4 py-2 text-xs font-black tracking-[0.2em] text-black">
+              <div className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-[10px] font-black tracking-[0.2em] text-black sm:text-xs">
                 {preview.label}
               </div>
 
-              <div className="absolute bottom-7 left-7 right-7">
-                <h3 className="text-2xl font-black tracking-[0.1em] md:text-3xl">
+              <div className="absolute bottom-6 left-6 right-6">
+                <h3 className="text-xl font-black tracking-[0.1em] sm:text-2xl">
                   {preview.title}
                 </h3>
 
-                <p className="mt-3 max-w-md text-sm leading-6 text-zinc-300">
+                <p className="mt-2 max-w-md text-xs leading-5 text-zinc-300 sm:text-sm">
                   Temporary editorial clothing photography for the first SYXRS
                   WRLD launch direction.
                 </p>
               </div>
             </div>
 
-            <div className="relative z-10 mt-6 grid grid-cols-2 gap-3">
+            <div className="relative z-10 mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {previewModes.map((mode) => (
                 <button
                   key={mode.label}
                   onClick={() => setPreview(mode)}
-                  className={`rounded-2xl border px-4 py-3 text-center text-xs font-black tracking-[0.2em] transition ${
+                  className={`rounded-2xl border px-4 py-3 text-center text-[10px] font-black tracking-[0.18em] transition sm:text-xs ${
                     preview.label === mode.label
                       ? "border-white bg-white text-black"
                       : "border-white/10 bg-black/45 text-zinc-300 hover:bg-white/10"
@@ -204,131 +196,42 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="access" className="px-6 py-28">
-        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-white/10 bg-white/[0.05] p-8 text-center backdrop-blur-2xl md:p-14">
-          <p className="mb-5 text-xs font-bold tracking-[0.55em] text-zinc-500">
-            WRLD ACCESS NEWSLETTER
-          </p>
-
-          <h2 className="text-3xl font-black tracking-[0.08em] sm:text-4xl md:text-6xl">
-            ENTER THE WRLD
-          </h2>
-
-          <p className="mx-auto mt-6 max-w-2xl leading-8 text-zinc-400">
-            Join the free SYXRS WRLD list for upcoming drop launches, preorder
-            windows, founder pricing, and release updates.
-          </p>
-
-          <iframe name="hidden_google_form" className="hidden" />
-
-          {!submitted ? (
-            <form
-              action={GOOGLE_FORM_ACTION}
-              method="POST"
-              target="hidden_google_form"
-              onSubmit={() => setSubmitted(true)}
-              className="mx-auto mt-10 flex max-w-xl flex-col gap-4 md:flex-row"
-            >
-              <input
-                name={GOOGLE_EMAIL_ENTRY}
-                type="email"
-                required
-                placeholder="ENTER EMAIL"
-                className="min-h-14 flex-1 rounded-full border border-white/10 bg-black/50 px-6 text-white outline-none"
-              />
-
-              <button
-                type="submit"
-                className="min-h-14 rounded-full bg-white px-9 font-black text-black transition hover:scale-105"
+      <section className="px-5 py-6 sm:px-6">
+        <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-3">
+          {["LIMITED RUNS", "TORONTO BUILT", "ATHLETIC STREETWEAR"].map(
+            (item) => (
+              <div
+                key={item}
+                className="rounded-2xl border border-white/10 bg-white/[0.05] px-5 py-4 text-center backdrop-blur-2xl"
               >
-                JOIN FREE
-              </button>
-            </form>
-          ) : (
-            <div className="mx-auto mt-10 max-w-xl rounded-[2rem] border border-white/10 bg-black/40 p-6">
-              <p className="text-xl font-black">YOU’RE IN.</p>
-
-              <p className="mt-3 text-zinc-400">
-                Watch your email for the next SYXRS WRLD drop update.
-              </p>
-            </div>
+                <p className="text-xs font-black tracking-[0.28em] text-zinc-300">
+                  {item}
+                </p>
+              </div>
+            )
           )}
         </div>
       </section>
 
-      <section id="drop" className="px-6 py-28">
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-4 text-center text-xs font-bold tracking-[0.55em] text-zinc-500">
-            COLLECTION
-          </p>
-
-          <h2 className="mb-16 text-center text-3xl font-black tracking-[0.08em] sm:text-4xl md:text-6xl">
-            FEATURED PIECES
-          </h2>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            {products.map((product) => (
-              <article
-                key={product.name}
-                className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06] backdrop-blur-xl"
-              >
-                <div className="relative h-[320px] overflow-hidden bg-zinc-900 md:h-[430px]">
-                  <img
-                    src={product.img}
-                    alt={product.name}
-                    className="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-110"
-                  />
-
-                  <div className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-black tracking-[0.2em] text-black">
-                    {product.tag}
-                  </div>
-                </div>
-
-                <div className="p-7">
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-2xl font-black">{product.name}</h3>
-
-                    <span className="text-sm text-zinc-300">
-                      ${product.price} CAD
-                    </span>
-                  </div>
-
-                  <p className="mt-4 leading-relaxed text-zinc-400">
-                    {product.desc}
-                  </p>
-
-                  <a
-                    href="#access"
-                    className="mt-7 block w-full rounded-full bg-white px-6 py-4 text-center font-black text-black transition hover:scale-[1.02]"
-                  >
-                    JOIN LIST TO RESERVE
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="configurator" className="px-6 py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2">
-          <div className="rounded-[3rem] border border-white/10 bg-white/[0.05] p-8 backdrop-blur-2xl md:p-12">
-            <p className="mb-4 text-xs font-bold tracking-[0.55em] text-zinc-500">
+      <section id="configurator" className="px-5 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2 lg:gap-8">
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-2xl sm:rounded-[3rem] md:p-8">
+            <p className="mb-4 text-xs font-bold tracking-[0.45em] text-zinc-500">
               CONFIGURATOR
             </p>
 
-            <h2 className="text-3xl font-black tracking-[0.08em] sm:text-4xl md:text-6xl">
-              BUILD YOUR DROP
+            <h2 className="text-3xl font-black tracking-[0.08em] sm:text-4xl md:text-5xl">
+              BUILD DROP 001
             </h2>
 
-            <p className="mt-6 max-w-xl leading-8 text-zinc-400">
+            <p className="mt-4 max-w-xl text-sm leading-7 text-zinc-400 sm:text-base">
               Choose your first SYXRS WRLD piece before production. Every build
               is reserved through preorder, keeping the drop limited and
               intentional.
             </p>
 
-            <div className="mt-10">
-              <p className="mb-4 text-sm tracking-[0.28em] text-zinc-400">
+            <div className="mt-7">
+              <p className="mb-3 text-sm tracking-[0.28em] text-zinc-400">
                 COLORWAY
               </p>
 
@@ -337,7 +240,7 @@ export default function Home() {
                   <button
                     key={c}
                     onClick={() => setColor(c)}
-                    className={`rounded-full px-6 py-3 font-black transition ${
+                    className={`rounded-full px-5 py-3 text-sm font-black transition ${
                       color === c
                         ? "bg-white text-black"
                         : "border border-white/10 bg-white/10 text-white"
@@ -349,8 +252,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-10">
-              <p className="mb-4 text-sm tracking-[0.28em] text-zinc-400">
+            <div className="mt-7">
+              <p className="mb-3 text-sm tracking-[0.28em] text-zinc-400">
                 SIZE
               </p>
 
@@ -359,7 +262,7 @@ export default function Home() {
                   <button
                     key={s}
                     onClick={() => setSize(s)}
-                    className={`h-12 w-16 rounded-full font-black transition ${
+                    className={`h-11 w-14 rounded-full text-sm font-black transition sm:w-16 ${
                       size === s
                         ? "bg-white text-black"
                         : "border border-white/10 bg-white/10 text-white"
@@ -371,51 +274,54 @@ export default function Home() {
               </div>
 
               <button
-                onClick={() => setSizeGuide(true)}
-                className="mt-5 text-sm font-bold text-zinc-400 underline underline-offset-4"
+                onClick={() => {
+                  setSizeGuide(true);
+                  trackEvent("size_guide_open");
+                }}
+                className="mt-4 text-sm font-bold text-zinc-400 underline underline-offset-4"
               >
                 OPEN SIZE GUIDE
               </button>
             </div>
 
-            <div className="mt-10 rounded-[2rem] border border-white/10 bg-black/40 p-6">
+            <div className="mt-7 rounded-[2rem] border border-white/10 bg-black/40 p-5">
               <div className="flex justify-between gap-5">
                 <span className="text-zinc-400">Selected</span>
-
                 <span className="font-black">
                   {color} / {size}
                 </span>
               </div>
 
-              <div className="mt-4 flex justify-between gap-5">
+              <div className="mt-3 flex justify-between gap-5">
                 <span className="text-zinc-400">Preorder Price</span>
-
                 <span className="font-black">${selectedPrice} CAD</span>
               </div>
             </div>
 
             <a
               href="#access"
-              className="mt-8 block rounded-full bg-white px-8 py-4 text-center font-black text-black transition hover:scale-[1.02]"
+              className="mt-6 block rounded-full bg-white px-8 py-4 text-center text-sm font-black text-black transition hover:scale-[1.02]"
             >
               JOIN LIST TO RESERVE
             </a>
           </div>
 
-          <div className="relative overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.05] p-8 backdrop-blur-2xl">
-            <div className="relative z-10 mb-8 flex items-center justify-between text-xs tracking-[0.28em] text-zinc-400">
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl sm:rounded-[3rem] sm:p-6">
+            <div className="relative z-10 mb-5 flex items-center justify-between text-[10px] tracking-[0.22em] text-zinc-400 sm:text-xs">
               <span>{color.toUpperCase()}</span>
-              <span>SIZE {size}</span>
+              <span>DROP 001 • SIZE {size}</span>
             </div>
 
-            <ShirtViewer />
+            <div className="max-h-[460px] overflow-hidden rounded-[2rem]">
+              <ShirtViewer />
+            </div>
 
-            <div className="mt-6 text-center">
+            <div className="mt-5 text-center">
               <h3 className="text-2xl font-black md:text-3xl">
-                INTERACTIVE 3D PRODUCT
+                DROP 001 3D BUILD
               </h3>
 
-              <p className="mx-auto mt-3 max-w-md text-zinc-400">
+              <p className="mx-auto mt-2 max-w-md text-sm text-zinc-400">
                 Selected build: {color} / {size} / ${selectedPrice} CAD
               </p>
             </div>
@@ -423,15 +329,138 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="drop" className="relative px-5 py-12 sm:px-6 sm:py-16">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(66,0,180,0.32),transparent_34%),radial-gradient(circle_at_78%_45%,rgba(220,25,45,0.24),transparent_38%)]" />
+
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-6 rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-2xl sm:rounded-[3rem] md:p-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="mb-4 text-xs font-bold tracking-[0.45em] text-zinc-500">
+              UPCOMING RELEASE
+            </p>
+
+            <h2 className="text-4xl font-black leading-[0.95] tracking-[0.08em] sm:text-5xl md:text-6xl">
+              DROP 002
+              <br />
+              COMING SOON
+            </h2>
+
+            <p className="mt-5 max-w-xl text-sm leading-7 text-zinc-400 sm:text-base">
+              The next SYXRS WRLD piece is still being built. No preview yet.
+              Join WRLD Access to be first when the signal goes live.
+            </p>
+
+            <div className="mt-6 grid max-w-lg grid-cols-1 gap-3 sm:grid-cols-3">
+              {["PREVIEW LOCKED", "LIMITED RUN", "WRLD ACCESS"].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/10 bg-black/35 p-4 text-center"
+                >
+                  <p className="text-[10px] font-bold tracking-[0.22em] text-zinc-400 md:text-xs">
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href="#access"
+              className="mt-6 inline-block rounded-full bg-white px-8 py-4 text-center text-sm font-black text-black transition hover:scale-105"
+            >
+              JOIN WRLD ACCESS
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="flex min-h-[260px] items-center justify-center rounded-[2rem] border border-white/10 bg-black/40 p-6 sm:min-h-[320px] md:min-h-[360px]"
+          >
+            <div className="text-center">
+              <p className="text-xs font-bold tracking-[0.45em] text-zinc-500">
+                PREVIEW LOCKED
+              </p>
+
+              <h3 className="mt-4 text-3xl font-black tracking-[0.08em] md:text-5xl">
+                NO MODEL YET
+              </h3>
+
+              <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-zinc-400">
+                DROP 002 is not finished yet. The 3D preview will unlock once
+                the next piece is ready.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="access" className="px-5 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-2xl md:flex-row md:items-center">
+          <div>
+            <p className="text-xs font-bold tracking-[0.45em] text-zinc-500">
+              WRLD ACCESS
+            </p>
+
+            <h2 className="mt-2 text-2xl font-black tracking-[0.08em] sm:text-3xl">
+              JOIN THE NEWSLETTER
+            </h2>
+          </div>
+
+          <iframe name="hidden_google_form" className="hidden" />
+
+          {!submitted ? (
+            <form
+              action={GOOGLE_FORM_ACTION}
+              method="POST"
+              target="hidden_google_form"
+              onSubmit={() => setSubmitted(true)}
+              className="flex w-full max-w-xl flex-col gap-3 sm:flex-row"
+            >
+              <input
+                name={GOOGLE_EMAIL_ENTRY}
+                type="email"
+                required
+                placeholder="ENTER EMAIL"
+                aria-label="Email address"
+                className="min-h-12 flex-1 rounded-full border border-white/10 bg-black/50 px-5 text-white outline-none"
+              />
+
+              <button
+                type="submit"
+                onClick={() =>
+                  trackEvent("join_form_submit", {
+                    color,
+                    size,
+                  })
+                }
+                className="min-h-12 rounded-full bg-white px-7 font-black text-black transition hover:scale-105"
+              >
+                JOIN WRLD ACCESS
+              </button>
+            </form>
+          ) : (
+            <p className="font-black text-white" aria-live="polite">
+              YOU’RE IN. NO SPAM. DROP ALERTS ONLY.
+            </p>
+          )}
+        </div>
+      </section>
+
       {sizeGuide && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-6 backdrop-blur">
-          <div className="w-full max-w-2xl rounded-[2rem] border border-white/10 bg-black/80 p-8 backdrop-blur-2xl">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-5 backdrop-blur">
+          <div className="w-full max-w-2xl rounded-[2rem] border border-white/10 bg-black/80 p-6 backdrop-blur-2xl">
             <div className="flex items-center justify-between gap-6">
-              <h3 className="text-3xl font-black">SIZE GUIDE</h3>
+              <h3 className="text-2xl font-black sm:text-3xl">SIZE GUIDE</h3>
 
               <button
                 onClick={() => setSizeGuide(false)}
-                className="rounded-full bg-white px-4 py-2 font-black text-black"
+                className="rounded-full bg-white px-4 py-2 text-sm font-black text-black"
               >
                 CLOSE
               </button>
@@ -447,12 +476,10 @@ export default function Home() {
               ].map((row) => (
                 <div
                   key={row[0]}
-                  className="grid grid-cols-3 border-b border-white/10 p-4 text-sm last:border-b-0"
+                  className="grid grid-cols-3 border-b border-white/10 p-4 text-xs last:border-b-0 sm:text-sm"
                 >
                   <span className="font-black">{row[0]}</span>
-
                   <span className="text-zinc-400">{row[1]}</span>
-
                   <span className="text-zinc-400">{row[2]}</span>
                 </div>
               ))}
@@ -461,7 +488,7 @@ export default function Home() {
         </div>
       )}
 
-      <footer className="border-t border-white/10 px-6 py-10 text-center text-zinc-500">
+      <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-zinc-500">
         © 2026 SYXRS WRLD • BUILT FROM THE NORTH
       </footer>
     </main>
