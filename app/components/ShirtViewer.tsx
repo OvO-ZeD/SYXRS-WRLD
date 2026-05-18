@@ -48,8 +48,8 @@ export default function ShirtViewer() {
             enableZoom={true}
             minDistance={6}
             maxDistance={11}
-            autoRotate={false}
-            autoRotateSpeed={0.7}
+            autoRotate={true}
+            autoRotateSpeed={1.4}
           />
         </Suspense>
       </Canvas>
