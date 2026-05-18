@@ -1,5 +1,6 @@
 "use client";
 
+import ShirtViewer from "./components/ShirtViewer";
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 
@@ -7,15 +8,6 @@ const GOOGLE_FORM_ACTION =
   "https://docs.google.com/forms/d/e/1FAIpQLScCklvzv5Oex-9YObi35eWCWAIp45RyJpGkJNoBtDFe8JavVQ/formResponse";
 
 const GOOGLE_EMAIL_ENTRY = "entry.1935803025";
-
-const colorImages = {
-  Obsidian:
-    "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop",
-  Bone:
-    "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1200&auto=format&fit=crop",
-  Gunmetal:
-    "https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop",
-};
 
 const products = [
   {
@@ -78,12 +70,13 @@ export default function Home() {
     return size === "XXL" ? 95 : 89;
   }, [size]);
 
-  const configImage = colorImages[color];
-
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030303] text-white">
       <nav className="fixed left-1/2 top-5 z-50 flex w-[92%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-black/50 px-5 py-4 backdrop-blur-2xl">
-        <a href="#" className="text-lg font-black tracking-[0.35em] md:text-xl">
+        <a
+          href="#"
+          className="text-lg font-black tracking-[0.35em] md:text-xl"
+        >
           SYXRS
         </a>
 
@@ -101,7 +94,7 @@ export default function Home() {
         </a>
       </nav>
 
-      <section className="grid-bg relative flex min-h-screen items-center px-6 py-32">
+      <section className="relative flex min-h-screen items-center px-6 py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(66,0,180,0.42),transparent_35%),radial-gradient(circle_at_82%_28%,rgba(220,25,45,0.28),transparent_38%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.08),transparent_36%)]" />
 
         <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
@@ -114,7 +107,7 @@ export default function Home() {
               DROP 001 • AFTER DARK
             </p>
 
-            <h1 className="chrome text-6xl font-black leading-[0.92] tracking-[0.08em] md:text-8xl lg:text-9xl">
+            <h1 className="text-6xl font-black leading-[0.92] tracking-[0.08em] md:text-8xl lg:text-9xl">
               SYXRS
               <br />
               WRLD
@@ -125,8 +118,8 @@ export default function Home() {
             </p>
 
             <p className="mt-6 max-w-xl text-base leading-8 text-zinc-400">
-              Toronto-born athletic streetwear for midnight lifts, street motion,
-              and the next generation building under pressure.
+              Toronto-born athletic streetwear for midnight lifts, street
+              motion, and the next generation building under pressure.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -139,7 +132,7 @@ export default function Home() {
 
               <a
                 href="#drop"
-                className="glass rounded-full px-9 py-4 text-center font-black text-white transition hover:bg-white/15"
+                className="rounded-full border border-white/10 bg-white/5 px-9 py-4 text-center font-black text-white transition hover:bg-white/15"
               >
                 VIEW COLLECTION
               </a>
@@ -147,7 +140,10 @@ export default function Home() {
 
             <div className="mt-12 grid max-w-xl grid-cols-3 gap-3">
               {["TORONTO", "FOUNDER ACCESS", "DROP 001"].map((item) => (
-                <div key={item} className="glass rounded-2xl p-4 text-center">
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-xl"
+                >
                   <p className="text-xs tracking-[0.25em] text-zinc-400">
                     {item}
                   </p>
@@ -160,7 +156,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1 }}
-            className="glass relative overflow-hidden rounded-[3rem] p-8"
+            className="relative overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.05] p-8 backdrop-blur-2xl"
           >
             <div className="relative z-10 flex items-center justify-between text-xs tracking-[0.28em] text-zinc-400">
               <span>LIVE PRODUCT PREVIEW</span>
@@ -184,6 +180,7 @@ export default function Home() {
                 <h3 className="text-3xl font-black tracking-[0.12em]">
                   {preview.title}
                 </h3>
+
                 <p className="mt-3 max-w-md text-sm leading-6 text-zinc-300">
                   Temporary editorial clothing photography for the first SYXRS
                   WRLD launch direction.
@@ -211,12 +208,14 @@ export default function Home() {
       </section>
 
       <section id="access" className="px-6 py-28">
-        <div className="glass mx-auto max-w-5xl rounded-[2.5rem] p-8 text-center md:p-14">
+        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-white/10 bg-white/[0.05] p-8 text-center backdrop-blur-2xl md:p-14">
           <p className="mb-5 text-xs font-bold tracking-[0.55em] text-zinc-500">
             WRLD ACCESS NEWSLETTER
           </p>
 
-          <h2 className="text-4xl font-black md:text-6xl">ENTER THE WRLD</h2>
+          <h2 className="text-4xl font-black md:text-6xl">
+            ENTER THE WRLD
+          </h2>
 
           <p className="mx-auto mt-6 max-w-2xl leading-8 text-zinc-400">
             Join the free SYXRS WRLD list for upcoming drop launches, preorder
@@ -251,6 +250,7 @@ export default function Home() {
           ) : (
             <div className="mx-auto mt-10 max-w-xl rounded-[2rem] border border-white/10 bg-black/40 p-6">
               <p className="text-xl font-black">YOU’RE IN.</p>
+
               <p className="mt-3 text-zinc-400">
                 Watch your email for the next SYXRS WRLD drop update.
               </p>
@@ -290,6 +290,7 @@ export default function Home() {
                 <div className="p-7">
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="text-2xl font-black">{product.name}</h3>
+
                     <span className="text-sm text-zinc-300">
                       ${product.price} CAD
                     </span>
@@ -314,7 +315,7 @@ export default function Home() {
 
       <section id="configurator" className="px-6 py-28">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2">
-          <div className="glass rounded-[3rem] p-8 md:p-12">
+          <div className="rounded-[3rem] border border-white/10 bg-white/[0.05] p-8 backdrop-blur-2xl md:p-12">
             <p className="mb-4 text-xs font-bold tracking-[0.55em] text-zinc-500">
               CONFIGURATOR
             </p>
@@ -325,7 +326,8 @@ export default function Home() {
 
             <p className="mt-6 max-w-xl leading-8 text-zinc-400">
               Choose your first SYXRS WRLD piece before production. Every build
-              is reserved through preorder, keeping the drop limited and intentional.
+              is reserved through preorder, keeping the drop limited and
+              intentional.
             </p>
 
             <div className="mt-10">
@@ -382,6 +384,7 @@ export default function Home() {
             <div className="mt-10 rounded-[2rem] border border-white/10 bg-black/40 p-6">
               <div className="flex justify-between gap-5">
                 <span className="text-zinc-400">Selected</span>
+
                 <span className="font-black">
                   {color} / {size}
                 </span>
@@ -389,6 +392,7 @@ export default function Home() {
 
               <div className="mt-4 flex justify-between gap-5">
                 <span className="text-zinc-400">Preorder Price</span>
+
                 <span className="font-black">${selectedPrice} CAD</span>
               </div>
             </div>
@@ -401,28 +405,19 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="glass relative overflow-hidden rounded-[3rem] p-8">
+          <div className="relative overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.05] p-8 backdrop-blur-2xl">
             <div className="relative z-10 mb-8 flex items-center justify-between text-xs tracking-[0.28em] text-zinc-400">
               <span>{color.toUpperCase()}</span>
               <span>SIZE {size}</span>
             </div>
 
-            <motion.div
-              key={color}
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.35 }}
-              className="overflow-hidden rounded-[2rem] bg-black"
-            >
-              <img
-                src={configImage}
-                alt={`${color} selected build`}
-                className="h-[560px] w-full object-cover opacity-85"
-              />
-            </motion.div>
+            <ShirtViewer />
 
             <div className="mt-6 text-center">
-              <h3 className="text-3xl font-black">{color} build preview</h3>
+              <h3 className="text-3xl font-black">
+                INTERACTIVE 3D PRODUCT
+              </h3>
+
               <p className="mx-auto mt-3 max-w-md text-zinc-400">
                 Selected build: {color} / {size} / ${selectedPrice} CAD
               </p>
@@ -437,7 +432,7 @@ export default function Home() {
 
       {sizeGuide && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-6 backdrop-blur">
-          <div className="glass w-full max-w-2xl rounded-[2rem] p-8">
+          <div className="w-full max-w-2xl rounded-[2rem] border border-white/10 bg-black/80 p-8 backdrop-blur-2xl">
             <div className="flex items-center justify-between gap-6">
               <h3 className="text-3xl font-black">SIZE GUIDE</h3>
 
@@ -462,7 +457,9 @@ export default function Home() {
                   className="grid grid-cols-3 border-b border-white/10 p-4 text-sm last:border-b-0"
                 >
                   <span className="font-black">{row[0]}</span>
+
                   <span className="text-zinc-400">{row[1]}</span>
+
                   <span className="text-zinc-400">{row[2]}</span>
                 </div>
               ))}
