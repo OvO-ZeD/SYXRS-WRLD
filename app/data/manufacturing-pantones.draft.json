@@ -1,0 +1,49 @@
+{
+  "draft": true,
+  "updatedAt": "2026-05-19",
+  "scope": "Manufacturing-only color reference. Not used by website UI.",
+  "items": [
+    {
+      "product": "Core Compression Tee",
+      "colorway": "Obsidian",
+      "pantone": "Black 6 C",
+      "notes": "Best-guess draft. Confirm with physical fabric lab dip."
+    },
+    {
+      "product": "Core Compression Tee",
+      "colorway": "Bone",
+      "pantone": "Warm Gray 1 C",
+      "notes": "Best-guess draft. Adjust warmer/cooler after strike-off review."
+    },
+    {
+      "product": "Core Compression Tee",
+      "colorway": "Gunmetal",
+      "pantone": "Cool Gray 11 C",
+      "notes": "Best-guess draft. Verify under indoor and daylight conditions."
+    },
+    {
+      "product": "Northside Pump Cover",
+      "colorway": "Gunmetal",
+      "pantone": "Cool Gray 11 C",
+      "notes": "Best-guess draft."
+    },
+    {
+      "product": "Shadow Manga Tech Top",
+      "colorway": "Obsidian",
+      "pantone": "Black 6 C",
+      "notes": "Best-guess draft."
+    },
+    {
+      "product": "Strike Taper Jogger",
+      "colorway": "Obsidian",
+      "pantone": "Black 6 C",
+      "notes": "Best-guess draft."
+    },
+    {
+      "product": "Utility Flow Jogger",
+      "colorway": "Ash Gray",
+      "pantone": "Cool Gray 8 C",
+      "notes": "Best-guess draft."
+    }
+  ]
+}

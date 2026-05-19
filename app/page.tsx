@@ -11,7 +11,7 @@ const GOOGLE_FORM_ACTION =
 
 const GOOGLE_EMAIL_ENTRY = "entry.1935803025";
 
-const colors = ["Obsidian", "Bone", "Gunmetal"] as const;
+const colors = ["Obsidian", "Bone", "Anime Collab"] as const;
 const sizes = ["S", "M", "L", "XL", "XXL"];
 
 
@@ -36,7 +36,12 @@ export default function Home() {
     return size === "XXL" ? 95 : 89;
   }, [size]);
 
-  const activeModelPath = color === "Bone" ? "/models/2nd-product.glb" : preview.modelPath;
+  const activeModelPath =
+    color === "Bone"
+      ? "/models/2nd-product.glb"
+      : color === "Anime Collab"
+        ? "/models/3rd-product.glb"
+        : preview.modelPath;
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030303] text-white">
