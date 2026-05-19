@@ -1,7 +1,7 @@
 "use client";
 
 import ShirtViewer from "./components/ShirtViewer";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import Image from "next/image";
 
@@ -16,32 +16,38 @@ const sizes = ["S", "M", "L", "XL", "XXL"];
 const previewModes = [
   {
     label: "LIVE DECAL",
-    title: "Chrome chest decal",
-    img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1200&auto=format&fit=crop",
+    title: "Performance hoodie",
+    description: "Training-layer silhouette built for cold starts and hard sessions.",
+    img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1400&auto=format&fit=crop",
   },
   {
     label: "NORTHSIDE FIT",
-    title: "Oversized street silhouette",
-    img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop",
+    title: "Street-athletic cut",
+    description: "Oversized fit with mobility-first drape for gym-to-street movement.",
+    img: "https://images.unsplash.com/photo-1517963628607-235ccdd5476b?q=80&w=1400&auto=format&fit=crop",
   },
   {
     label: "CHROME DETAIL",
-    title: "Reflective print detail",
-    img: "https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop",
+    title: "Reflective accents",
+    description: "Low-light visibility details with premium tonal contrast textures.",
+    img: "https://images.unsplash.com/photo-1483721310020-03333e577078?q=80&w=1400&auto=format&fit=crop",
   },
   {
     label: "AFTER DARK",
-    title: "Night drop campaign",
-    img: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1200&auto=format&fit=crop",
+    title: "After-dark training",
+    description: "Night-run editorial energy for the next SYXRS WRLD campaign era.",
+    img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1400&auto=format&fit=crop",
   },
 ];
 
 export default function Home() {
   const [color, setColor] = useState<(typeof colors)[number]>("Obsidian");
   const [size, setSize] = useState("L");
-  const [preview, setPreview] = useState(previewModes[0]);
   const [submitted, setSubmitted] = useState(false);
   const [sizeGuide, setSizeGuide] = useState(false);
+  const [previewIndex, setPreviewIndex] = useState(0);
+
+  const preview = previewModes[previewIndex];
 
   const trackEvent = (eventName: string, payload?: Record<string, string>) => {
     if (typeof window === "undefined") return;
@@ -151,13 +157,23 @@ export default function Home() {
             </div>
 
             <div className="relative mt-5 overflow-hidden rounded-[1.5rem] bg-black sm:rounded-[2rem]">
-              <Image
-                src={preview.img}
-                alt={preview.title}
-                width={1200}
-                height={900}
-                className="h-[300px] w-full object-cover opacity-80 transition duration-700 sm:h-[380px] md:h-[450px]"
-              />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={preview.label}
+                  initial={{ opacity: 0.45, scale: 1.03 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0.35, scale: 0.98 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                >
+                  <Image
+                    src={preview.img}
+                    alt={preview.title}
+                    width={1200}
+                    height={900}
+                    className="h-[300px] w-full object-cover opacity-80 transition duration-700 sm:h-[380px] md:h-[450px]"
+                  />
+                </motion.div>
+              </AnimatePresence>
 
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
@@ -171,26 +187,56 @@ export default function Home() {
                 </h3>
 
                 <p className="mt-2 max-w-md text-xs leading-5 text-zinc-300 sm:text-sm">
-                  Temporary editorial clothing photography for the first SYXRS
-                  WRLD launch direction.
+                  {preview.description}
                 </p>
               </div>
             </div>
 
+            <div className="mt-3 flex gap-2">
+              <button
+                onClick={() =>
+                  setPreviewIndex((current) =>
+                    current === 0 ? previewModes.length - 1 : current - 1
+                  )
+                }
+                className="rounded-full border border-white/20 bg-black/45 px-4 py-2 text-[10px] font-black tracking-[0.22em] text-zinc-200 transition hover:scale-105 hover:bg-white/20"
+              >
+                PREV
+              </button>
+              <button
+                onClick={() =>
+                  setPreviewIndex((current) => (current + 1) % previewModes.length)
+                }
+                className="rounded-full border border-white/20 bg-black/45 px-4 py-2 text-[10px] font-black tracking-[0.22em] text-zinc-200 transition hover:scale-105 hover:bg-white/20"
+              >
+                NEXT
+              </button>
+            </div>
+
             <div className="relative z-10 mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {previewModes.map((mode) => (
-                <button
-                  key={mode.label}
-                  onClick={() => setPreview(mode)}
-                  className={`rounded-2xl border px-4 py-3 text-center text-[10px] font-black tracking-[0.18em] transition sm:text-xs ${
-                    preview.label === mode.label
-                      ? "border-white bg-white text-black"
-                      : "border-white/10 bg-black/45 text-zinc-300 hover:bg-white/10"
-                  }`}
-                >
-                  {mode.label}
-                </button>
-              ))}
+              {previewModes.map((mode, index) => {
+                const isActive = preview.label === mode.label;
+
+                return (
+                  <motion.button
+                    key={mode.label}
+                    onClick={() => {
+                      setPreviewIndex(index);
+                      trackEvent("preview_mode_select", { mode: mode.label });
+                    }}
+                    whileTap={{ scale: 0.97 }}
+                    whileHover={{ y: -2 }}
+                    aria-pressed={isActive}
+                    className={`rounded-2xl border px-4 py-3 text-center text-[10px] font-black tracking-[0.18em] transition sm:text-xs ${
+                      isActive
+                        ? "border-white bg-white text-black shadow-[0_0_25px_rgba(255,255,255,0.25)]"
+                        : "border-white/10 bg-black/45 text-zinc-300 hover:border-white/35 hover:bg-white/10"
+                    }`}
+                  >
+                    {mode.label}
+                  </motion.button>
+                );
+              })}
             </div>
           </motion.div>
         </div>
