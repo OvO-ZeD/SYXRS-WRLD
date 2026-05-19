@@ -17,7 +17,7 @@ function ShirtModel({ modelPath }: ShirtViewerProps) {
   const { scene } = useGLTF(modelPath);
 
   return (
-    <Center position={[0, 0.2, 0]}>
+    <Center position={[0, 0.55, 0]}>
       <primitive
         object={scene}
         scale={0.78}
