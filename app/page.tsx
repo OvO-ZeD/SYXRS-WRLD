@@ -60,7 +60,7 @@ export default function Home() {
       <section className="relative flex min-h-[78vh] items-center px-5 py-16 sm:px-6 sm:py-18">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(66,0,180,0.42),transparent_35%),radial-gradient(circle_at_82%_28%,rgba(220,25,45,0.28),transparent_38%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.08),transparent_36%)]" />
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-6 lg:grid-cols-[1.18fr_0.82fr] lg:gap-7">
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ export default function Home() {
               DROP 001 • AFTER DARK
             </p>
 
-            <h1 className="text-5xl font-black leading-[0.92] tracking-[0.06em] sm:text-6xl md:text-7xl lg:text-8xl">
+            <h1 className="text-5xl font-black leading-[0.9] tracking-[0.05em] sm:text-6xl md:text-6xl lg:text-7xl">
               SYXRS
               <br />
               WRLD
@@ -80,7 +80,7 @@ export default function Home() {
               BUILT FROM THE NORTH
             </p>
 
-            <p className="mt-4 max-w-xl text-sm leading-7 text-zinc-400 sm:text-base sm:leading-8">
+            <p className="mt-3 max-w-lg text-sm leading-7 text-zinc-400 sm:text-base sm:leading-7">
               Toronto-born athletic streetwear for midnight lifts, street motion,
               and the next generation building under pressure.
             </p>
@@ -111,7 +111,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9 }}
-            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl sm:rounded-[3rem] sm:p-6"
+            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-4 backdrop-blur-2xl sm:rounded-[2.25rem] sm:p-5"
           >
             <div className="relative z-10 flex items-center justify-between text-[10px] tracking-[0.22em] text-zinc-400 sm:text-xs">
               <span>LIVE PRODUCT PREVIEW</span>
@@ -132,7 +132,7 @@ export default function Home() {
                     alt={preview.previewTitle}
                     width={1200}
                     height={900}
-                    className="h-[280px] w-full object-cover brightness-110 contrast-110 transition duration-700 sm:h-[340px] md:h-[400px]"
+                    className="h-[240px] w-full object-cover brightness-110 contrast-110 transition duration-700 sm:h-[280px] md:h-[320px]"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -175,7 +175,7 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="relative z-10 mt-3 rounded-2xl border border-white/10 bg-black/30 p-2">
+            <div className="relative z-10 mt-2 rounded-2xl border border-white/10 bg-black/30 p-2">
               <div className="mb-2 grid grid-cols-2 gap-2">
                 {[
                   { label: "SHIRTS", key: "Shirt" },
