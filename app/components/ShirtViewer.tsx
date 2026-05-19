@@ -9,8 +9,12 @@ import {
 } from "@react-three/drei";
 import { Suspense } from "react";
 
-function ShirtModel() {
-  const { scene } = useGLTF("/models/first-product.glb");
+type ShirtViewerProps = {
+  modelPath: string;
+};
+
+function ShirtModel({ modelPath }: ShirtViewerProps) {
+  const { scene } = useGLTF(modelPath);
 
   return (
     <Center position={[0, 0.55, 0]}>
@@ -23,7 +27,7 @@ function ShirtModel() {
   );
 }
 
-export default function ShirtViewer() {
+export default function ShirtViewer({ modelPath }: ShirtViewerProps) {
   return (
     <div className="relative h-[520px] w-full overflow-hidden rounded-[2rem] bg-black/30 md:h-[620px]">
       <Canvas camera={{ position: [0, 0, 8.5], fov: 28 }}>
@@ -41,7 +45,7 @@ export default function ShirtViewer() {
 
           <Environment preset="city" />
 
-          <ShirtModel />
+          <ShirtModel modelPath={modelPath} />
 
           <OrbitControls
             enablePan={false}
@@ -60,5 +64,3 @@ export default function ShirtViewer() {
     </div>
   );
 }
-
-useGLTF.preload("/models/first-product.glb");

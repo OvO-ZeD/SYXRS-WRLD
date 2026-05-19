@@ -4,6 +4,7 @@ import ShirtViewer from "./components/ShirtViewer";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import Image from "next/image";
+import { dropProducts } from "./data/products";
 
 const GOOGLE_FORM_ACTION =
   "https://docs.google.com/forms/d/e/1FAIpQLScCklvzv5Oex-9YObi35eWCWAIp45RyJpGkJNoBtDFe8JavVQ/formResponse";
@@ -13,32 +14,6 @@ const GOOGLE_EMAIL_ENTRY = "entry.1935803025";
 const colors = ["Obsidian", "Bone", "Gunmetal"] as const;
 const sizes = ["S", "M", "L", "XL", "XXL"];
 
-const previewModes = [
-  {
-    label: "LIVE DECAL",
-    title: "Performance hoodie",
-    description: "Training-layer silhouette built for cold starts and hard sessions.",
-    img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1400&auto=format&fit=crop",
-  },
-  {
-    label: "NORTHSIDE FIT",
-    title: "Street-athletic cut",
-    description: "Oversized fit with mobility-first drape for gym-to-street movement.",
-    img: "https://images.unsplash.com/photo-1517963628607-235ccdd5476b?q=80&w=1400&auto=format&fit=crop",
-  },
-  {
-    label: "CHROME DETAIL",
-    title: "Reflective accents",
-    description: "Low-light visibility details with premium tonal contrast textures.",
-    img: "https://images.unsplash.com/photo-1483721310020-03333e577078?q=80&w=1400&auto=format&fit=crop",
-  },
-  {
-    label: "AFTER DARK",
-    title: "After-dark training",
-    description: "Night-run editorial energy for the next SYXRS WRLD campaign era.",
-    img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1400&auto=format&fit=crop",
-  },
-];
 
 export default function Home() {
   const [color, setColor] = useState<(typeof colors)[number]>("Obsidian");
@@ -47,7 +22,7 @@ export default function Home() {
   const [sizeGuide, setSizeGuide] = useState(false);
   const [previewIndex, setPreviewIndex] = useState(0);
 
-  const preview = previewModes[previewIndex];
+  const preview = dropProducts[previewIndex];
 
   const trackEvent = (eventName: string, payload?: Record<string, string>) => {
     if (typeof window === "undefined") return;
@@ -159,15 +134,15 @@ export default function Home() {
             <div className="relative mt-5 overflow-hidden rounded-[1.5rem] bg-black sm:rounded-[2rem]">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={preview.label}
+                  key={preview.id}
                   initial={{ opacity: 0.45, scale: 1.03 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0.35, scale: 0.98 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
                 >
                   <Image
-                    src={preview.img}
-                    alt={preview.title}
+                    src={preview.previewImage}
+                    alt={preview.previewTitle}
                     width={1200}
                     height={900}
                     className="h-[300px] w-full object-cover opacity-80 transition duration-700 sm:h-[380px] md:h-[450px]"
@@ -178,16 +153,16 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
               <div className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-[10px] font-black tracking-[0.2em] text-black sm:text-xs">
-                {preview.label}
+                {preview.tags[0]}
               </div>
 
               <div className="absolute bottom-6 left-6 right-6">
                 <h3 className="text-xl font-black tracking-[0.1em] sm:text-2xl">
-                  {preview.title}
+                  {preview.previewTitle}
                 </h3>
 
                 <p className="mt-2 max-w-md text-xs leading-5 text-zinc-300 sm:text-sm">
-                  {preview.description}
+                  {preview.previewDescription}
                 </p>
               </div>
             </div>
@@ -196,7 +171,7 @@ export default function Home() {
               <button
                 onClick={() =>
                   setPreviewIndex((current) =>
-                    current === 0 ? previewModes.length - 1 : current - 1
+                    current === 0 ? dropProducts.length - 1 : current - 1
                   )
                 }
                 className="rounded-full border border-white/20 bg-black/45 px-4 py-2 text-[10px] font-black tracking-[0.22em] text-zinc-200 transition hover:scale-105 hover:bg-white/20"
@@ -205,7 +180,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() =>
-                  setPreviewIndex((current) => (current + 1) % previewModes.length)
+                  setPreviewIndex((current) => (current + 1) % dropProducts.length)
                 }
                 className="rounded-full border border-white/20 bg-black/45 px-4 py-2 text-[10px] font-black tracking-[0.22em] text-zinc-200 transition hover:scale-105 hover:bg-white/20"
               >
@@ -214,15 +189,15 @@ export default function Home() {
             </div>
 
             <div className="relative z-10 mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {previewModes.map((mode, index) => {
-                const isActive = preview.label === mode.label;
+              {dropProducts.map((mode, index) => {
+                const isActive = preview.id === mode.id;
 
                 return (
                   <motion.button
-                    key={mode.label}
+                    key={mode.id}
                     onClick={() => {
                       setPreviewIndex(index);
-                      trackEvent("preview_mode_select", { mode: mode.label });
+                      trackEvent("preview_mode_select", { mode: mode.name });
                     }}
                     whileTap={{ scale: 0.97 }}
                     whileHover={{ y: -2 }}
@@ -233,10 +208,25 @@ export default function Home() {
                         : "border-white/10 bg-black/45 text-zinc-300 hover:border-white/35 hover:bg-white/10"
                     }`}
                   >
-                    {mode.label}
+                    {mode.name}
                   </motion.button>
                 );
               })}
+            </div>
+
+            <div className="mt-4 grid grid-cols-1 gap-2 text-xs text-zinc-300 sm:grid-cols-2">
+              <p>
+                <span className="text-zinc-500">Product:</span> {preview.name}
+              </p>
+              <p>
+                <span className="text-zinc-500">Category:</span> {preview.category}
+              </p>
+              <p>
+                <span className="text-zinc-500">Fit:</span> {preview.fit}
+              </p>
+              <p>
+                <span className="text-zinc-500">Price:</span> ${preview.price} CAD
+              </p>
             </div>
           </motion.div>
         </div>
@@ -359,7 +349,7 @@ export default function Home() {
             </div>
 
             <div className="max-h-[460px] overflow-hidden rounded-[2rem]">
-              <ShirtViewer />
+              <ShirtViewer modelPath={preview.modelPath} />
             </div>
 
             <div className="mt-5 text-center">

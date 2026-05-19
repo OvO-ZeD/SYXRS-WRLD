@@ -34,3 +34,26 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## SYXRS WRLD: Quick 3D Model Swap Workflow
+
+You can now swap products and 3D models without editing core UI code.
+
+### 1) Add your `.glb` model
+- Put model files in `public/models/`
+- Example: `public/models/drop-001-shirt-01.glb`
+
+### 2) Register the product
+- Open `app/data/products.ts`
+- Add or edit a product in `dropProducts`
+- Update these fields:
+  - `name`, `category`, `color`, `price`, `fit`, `tags`
+  - `modelPath` (ex: `/models/drop-001-shirt-01.glb`)
+  - `previewImage`, `previewTitle`, `previewDescription`
+
+### 3) Save and run
+```bash
+npm run dev
+```
+
+The product buttons, preview image, and 3D viewer are now data-driven from `dropProducts`.
