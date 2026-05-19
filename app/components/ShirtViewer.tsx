@@ -20,7 +20,7 @@ function ShirtModel({ modelPath }: ShirtViewerProps) {
     <Center position={[0, 0.55, 0]}>
       <primitive
         object={scene}
-        scale={0.78}
+        scale={0.75}
         rotation={[0, 0, 0]}
       />
     </Center>

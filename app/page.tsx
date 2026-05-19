@@ -36,6 +36,8 @@ export default function Home() {
     return size === "XXL" ? 95 : 89;
   }, [size]);
 
+  const activeModelPath = color === "Bone" ? "/models/2nd-product.glb" : preview.modelPath;
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030303] text-white">
       <nav className="fixed left-1/2 top-3 z-50 flex w-[94%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-black/50 px-3 py-2.5 backdrop-blur-2xl sm:top-5 sm:w-[92%] sm:px-5 sm:py-4">
@@ -365,7 +367,7 @@ export default function Home() {
             </div>
 
             <div className="max-h-[360px] overflow-hidden rounded-[1.25rem] sm:max-h-[460px] sm:rounded-[2rem]">
-              <ShirtViewer modelPath={preview.modelPath} />
+              <ShirtViewer modelPath={activeModelPath} />
             </div>
 
             <div className="mt-5 text-center">
