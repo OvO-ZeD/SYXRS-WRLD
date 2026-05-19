@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030303] text-white">
-      <nav className="fixed left-1/2 top-5 z-50 flex w-[92%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-black/50 px-4 py-3 backdrop-blur-2xl sm:px-5 sm:py-4">
+      <nav className="fixed left-1/2 top-3 z-50 flex w-[94%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-black/50 px-3 py-2.5 backdrop-blur-2xl sm:top-5 sm:w-[92%] sm:px-5 sm:py-4">
         <a href="#" className="text-base font-black tracking-[0.3em] md:text-xl">
           SYXRS
         </a>
@@ -57,7 +57,7 @@ export default function Home() {
         </a>
       </nav>
 
-      <section className="relative flex min-h-[78vh] items-center px-5 py-16 sm:px-6 sm:py-18">
+      <section className="relative flex min-h-[62vh] items-center px-4 py-12 sm:min-h-[78vh] sm:px-6 sm:py-18">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(66,0,180,0.42),transparent_35%),radial-gradient(circle_at_82%_28%,rgba(220,25,45,0.28),transparent_38%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.08),transparent_36%)]" />
 
         <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-6 lg:grid-cols-[1.18fr_0.82fr] lg:gap-7">
@@ -70,22 +70,22 @@ export default function Home() {
               DROP 001 • AFTER DARK
             </p>
 
-            <h1 className="text-5xl font-black leading-[0.9] tracking-[0.05em] sm:text-6xl md:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-black leading-[0.9] tracking-[0.04em] sm:text-6xl md:text-6xl lg:text-7xl">
               SYXRS
               <br />
               WRLD
             </h1>
 
-            <p className="mt-5 max-w-2xl text-base font-semibold tracking-[0.18em] text-zinc-300 sm:text-lg md:text-2xl">
+            <p className="mt-4 max-w-2xl text-sm font-semibold tracking-[0.14em] text-zinc-300 sm:text-lg md:text-2xl">
               BUILT FROM THE NORTH
             </p>
 
-            <p className="mt-3 max-w-lg text-sm leading-7 text-zinc-400 sm:text-base sm:leading-7">
+            <p className="mt-2 max-w-lg text-sm leading-6 text-zinc-400 sm:text-base sm:leading-7">
               Toronto-born athletic streetwear for midnight lifts, street motion,
               and the next generation building under pressure.
             </p>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:gap-3">
               <a
                 href="#access"
                 onClick={() => trackEvent("hero_cta_click", { source: "hero_primary" })}
@@ -132,7 +132,7 @@ export default function Home() {
                     alt={preview.previewTitle}
                     width={1200}
                     height={900}
-                    className="h-[240px] w-full object-cover brightness-110 contrast-110 transition duration-700 sm:h-[280px] md:h-[320px]"
+                    className="h-[200px] w-full object-cover brightness-110 contrast-110 transition duration-700 sm:h-[280px] md:h-[320px]"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -248,7 +248,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="-mt-4 px-5 py-2 sm:-mt-6 sm:px-6">
+      <section className="-mt-2 px-4 py-2 sm:-mt-6 sm:px-6">
         <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-3">
           {["LIMITED RUNS", "TORONTO BUILT", "ATHLETIC STREETWEAR"].map(
             (item) => (
@@ -265,14 +265,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="configurator" className="px-5 py-9 sm:px-6 sm:py-12">
+      <section id="configurator" className="px-4 py-7 sm:px-6 sm:py-12">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2 lg:gap-8">
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-2xl sm:rounded-[3rem] md:p-8">
+          <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl sm:rounded-[3rem] md:p-8">
             <p className="mb-4 text-xs font-bold tracking-[0.45em] text-zinc-500">
               CONFIGURATOR
             </p>
 
-            <h2 className="text-3xl font-black tracking-[0.08em] sm:text-4xl md:text-5xl">
+            <h2 className="text-2xl font-black tracking-[0.06em] sm:text-4xl md:text-5xl">
               BUILD DROP 001
             </h2>
 
@@ -282,7 +282,7 @@ export default function Home() {
               intentional.
             </p>
 
-            <div className="mt-7">
+            <div className="mt-5">
               <p className="mb-3 text-sm tracking-[0.28em] text-zinc-400">
                 COLORWAY
               </p>
@@ -304,7 +304,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-7">
+            <div className="mt-5">
               <p className="mb-3 text-sm tracking-[0.28em] text-zinc-400">
                 SIZE
               </p>
@@ -336,7 +336,7 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="mt-7 rounded-[2rem] border border-white/10 bg-black/40 p-5">
+            <div className="mt-5 rounded-[1.25rem] border border-white/10 bg-black/40 p-4 sm:rounded-[2rem] sm:p-5">
               <div className="flex justify-between gap-5">
                 <span className="text-zinc-400">Selected</span>
                 <span className="font-black">
@@ -358,13 +358,13 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl sm:rounded-[3rem] sm:p-6">
+          <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-4 backdrop-blur-2xl sm:rounded-[3rem] sm:p-6">
             <div className="relative z-10 mb-5 flex items-center justify-between text-[10px] tracking-[0.22em] text-zinc-400 sm:text-xs">
               <span>{color.toUpperCase()}</span>
               <span>DROP 001 • SIZE {size}</span>
             </div>
 
-            <div className="max-h-[460px] overflow-hidden rounded-[2rem]">
+            <div className="max-h-[360px] overflow-hidden rounded-[1.25rem] sm:max-h-[460px] sm:rounded-[2rem]">
               <ShirtViewer modelPath={preview.modelPath} />
             </div>
 
@@ -381,10 +381,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="drop" className="relative px-5 py-9 sm:px-6 sm:py-12">
+      <section id="drop" className="relative px-4 py-7 sm:px-6 sm:py-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(66,0,180,0.32),transparent_34%),radial-gradient(circle_at_78%_45%,rgba(220,25,45,0.24),transparent_38%)]" />
 
-        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-6 rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-2xl sm:rounded-[3rem] md:p-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-5 rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl sm:rounded-[3rem] md:p-8 lg:grid-cols-[0.9fr_1.1fr]">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -452,8 +452,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="access" className="px-5 py-8 sm:px-6 sm:py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-2xl md:flex-row md:items-center">
+      <section id="access" className="px-4 py-7 sm:px-6 sm:py-10">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl md:flex-row md:items-center">
           <div>
             <p className="text-xs font-bold tracking-[0.45em] text-zinc-500">
               WRLD ACCESS
@@ -540,7 +540,7 @@ export default function Home() {
         </div>
       )}
 
-      <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-zinc-500">
+      <footer className="border-t border-white/10 px-6 py-6 text-center text-xs text-zinc-500 sm:text-sm">
         © 2026 SYXRS WRLD • BUILT FROM THE NORTH
       </footer>
     </main>
