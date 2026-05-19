@@ -85,7 +85,7 @@ export default function Home() {
               and the next generation building under pressure.
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#access"
                 onClick={() => trackEvent("hero_cta_click", { source: "hero_primary" })}
@@ -93,10 +93,6 @@ export default function Home() {
               >
                 JOIN WRLD ACCESS
               </a>
-
-              <p className="text-xs tracking-[0.18em] text-zinc-400 sm:self-center">
-                LIMITED FIRST RUN • ACCESS CLOSES SOON
-              </p>
 
               <a
                 href="#configurator"
@@ -106,18 +102,9 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-6 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3">
-              {["TORONTO", "FOUNDER ACCESS", "DROP 001"].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-xl"
-                >
-                  <p className="text-xs tracking-[0.25em] text-zinc-400">
-                    {item}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <p className="mt-3 text-xs tracking-[0.18em] text-zinc-400">
+              LIMITED FIRST RUN • ACCESS CLOSES SOON
+            </p>
           </motion.div>
 
           <motion.div
