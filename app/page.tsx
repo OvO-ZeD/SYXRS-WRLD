@@ -57,7 +57,7 @@ export default function Home() {
         </a>
       </nav>
 
-      <section className="relative flex min-h-[82vh] items-center px-5 py-20 sm:px-6 sm:py-22">
+      <section className="relative flex min-h-[78vh] items-center px-5 py-16 sm:px-6 sm:py-18">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(66,0,180,0.42),transparent_35%),radial-gradient(circle_at_82%_28%,rgba(220,25,45,0.28),transparent_38%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.08),transparent_36%)]" />
 
         <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
@@ -102,7 +102,7 @@ export default function Home() {
               </a>
             </div>
 
-            <p className="mt-3 text-xs tracking-[0.18em] text-zinc-400">
+            <p className="mt-2 text-xs tracking-[0.16em] text-zinc-400">
               LIMITED FIRST RUN • ACCESS CLOSES SOON
             </p>
           </motion.div>
@@ -201,7 +201,7 @@ export default function Home() {
               })}
             </div>
 
-            <div className="mt-3 grid grid-cols-1 gap-1.5 text-xs text-zinc-300 sm:grid-cols-2">
+            <div className="mt-2 grid grid-cols-1 gap-1 text-xs text-zinc-300 sm:grid-cols-2">
               <p>
                 <span className="text-zinc-500">Product:</span> {preview.name}
               </p>
@@ -219,7 +219,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-5 py-4 sm:px-6">
+      <section className="-mt-4 px-5 py-2 sm:-mt-6 sm:px-6">
         <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-3">
           {["LIMITED RUNS", "TORONTO BUILT", "ATHLETIC STREETWEAR"].map(
             (item) => (
