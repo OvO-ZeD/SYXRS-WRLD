@@ -57,3 +57,23 @@ npm run dev
 ```
 
 The product buttons, preview image, and 3D viewer are now data-driven from `dropProducts`.
+
+## Auto Push on Save (Aggressive)
+
+You asked for automatic updates to both GitHub and Vercel as changes are made.
+
+Run:
+
+```bash
+npm run auto:ship
+```
+
+What it does:
+- Watches `app/`, `public/`, `README.md`, `next.config.ts`, `package.json`
+- On change, it auto-runs:
+  - `git add -A`
+  - `git commit -m "chore(auto-ship): update ..."`
+  - `git push origin main`
+- Vercel auto-deploys after each push.
+
+Use with care: this is intentionally aggressive and can create many commits quickly.

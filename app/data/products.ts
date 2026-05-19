@@ -25,7 +25,7 @@ export const dropProducts: DropProduct[] = [
     tags: ["PERFORMANCE", "DROP 001"],
     modelPath: "/models/first-product.glb",
     previewImage:
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1400&auto=format&fit=crop",
     previewTitle: "Performance hoodie",
     previewDescription:
       "Training-layer silhouette built for cold starts and hard sessions.",
@@ -40,7 +40,7 @@ export const dropProducts: DropProduct[] = [
     tags: ["OVERSIZED", "GYM-TO-STREET"],
     modelPath: "/models/first-product.glb",
     previewImage:
-      "https://images.unsplash.com/photo-1517963628607-235ccdd5476b?q=80&w=1400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1517343985841-f8b2d66e010b?q=80&w=1400&auto=format&fit=crop",
     previewTitle: "Street-athletic cut",
     previewDescription:
       "Oversized fit with mobility-first drape for gym-to-street movement.",
@@ -55,7 +55,7 @@ export const dropProducts: DropProduct[] = [
     tags: ["ANIME EDITION", "LIMITED"],
     modelPath: "/models/first-product.glb",
     previewImage:
-      "https://images.unsplash.com/photo-1483721310020-03333e577078?q=80&w=1400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1530822847156-5df684ec5ee1?q=80&w=1400&auto=format&fit=crop",
     previewTitle: "Reflective accents",
     previewDescription:
       "Low-light visibility details with premium tonal contrast textures.",

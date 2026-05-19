@@ -57,7 +57,7 @@ export default function Home() {
         </a>
       </nav>
 
-      <section className="relative flex min-h-screen items-center px-5 py-24 sm:px-6 sm:py-28">
+      <section className="relative flex min-h-[82vh] items-center px-5 py-20 sm:px-6 sm:py-22">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(66,0,180,0.42),transparent_35%),radial-gradient(circle_at_82%_28%,rgba(220,25,45,0.28),transparent_38%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.08),transparent_36%)]" />
 
         <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
@@ -70,7 +70,7 @@ export default function Home() {
               DROP 001 • AFTER DARK
             </p>
 
-            <h1 className="text-5xl font-black leading-[0.92] tracking-[0.06em] sm:text-6xl md:text-8xl lg:text-9xl">
+            <h1 className="text-5xl font-black leading-[0.92] tracking-[0.06em] sm:text-6xl md:text-7xl lg:text-8xl">
               SYXRS
               <br />
               WRLD
@@ -106,7 +106,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3">
+            <div className="mt-6 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3">
               {["TORONTO", "FOUNDER ACCESS", "DROP 001"].map((item) => (
                 <div
                   key={item}
@@ -145,12 +145,12 @@ export default function Home() {
                     alt={preview.previewTitle}
                     width={1200}
                     height={900}
-                    className="h-[300px] w-full object-cover opacity-80 transition duration-700 sm:h-[380px] md:h-[450px]"
+                    className="h-[280px] w-full object-cover brightness-110 contrast-110 transition duration-700 sm:h-[340px] md:h-[400px]"
                   />
                 </motion.div>
               </AnimatePresence>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
 
               <div className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-[10px] font-black tracking-[0.2em] text-black sm:text-xs">
                 {preview.tags[0]}
@@ -188,7 +188,7 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="relative z-10 mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="relative z-10 mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
               {dropProducts.map((mode, index) => {
                 const isActive = preview.id === mode.id;
 
@@ -214,7 +214,7 @@ export default function Home() {
               })}
             </div>
 
-            <div className="mt-4 grid grid-cols-1 gap-2 text-xs text-zinc-300 sm:grid-cols-2">
+            <div className="mt-3 grid grid-cols-1 gap-1.5 text-xs text-zinc-300 sm:grid-cols-2">
               <p>
                 <span className="text-zinc-500">Product:</span> {preview.name}
               </p>
@@ -232,7 +232,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-5 py-6 sm:px-6">
+      <section className="px-5 py-4 sm:px-6">
         <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-3">
           {["LIMITED RUNS", "TORONTO BUILT", "ATHLETIC STREETWEAR"].map(
             (item) => (
@@ -249,7 +249,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="configurator" className="px-5 py-12 sm:px-6 sm:py-16">
+      <section id="configurator" className="px-5 py-9 sm:px-6 sm:py-12">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2 lg:gap-8">
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-2xl sm:rounded-[3rem] md:p-8">
             <p className="mb-4 text-xs font-bold tracking-[0.45em] text-zinc-500">
@@ -365,7 +365,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="drop" className="relative px-5 py-12 sm:px-6 sm:py-16">
+      <section id="drop" className="relative px-5 py-9 sm:px-6 sm:py-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(66,0,180,0.32),transparent_34%),radial-gradient(circle_at_78%_45%,rgba(220,25,45,0.24),transparent_38%)]" />
 
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-6 rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-2xl sm:rounded-[3rem] md:p-8 lg:grid-cols-[0.9fr_1.1fr]">
@@ -436,7 +436,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="access" className="px-5 py-12 sm:px-6 sm:py-16">
+      <section id="access" className="px-5 py-8 sm:px-6 sm:py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-2xl md:flex-row md:items-center">
           <div>
             <p className="text-xs font-bold tracking-[0.45em] text-zinc-500">
