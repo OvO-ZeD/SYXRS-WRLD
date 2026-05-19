@@ -175,30 +175,59 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="relative z-10 mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {dropProducts.map((mode, index) => {
-                const isActive = preview.id === mode.id;
-
-                return (
-                  <motion.button
-                    key={mode.id}
-                    onClick={() => {
-                      setPreviewIndex(index);
-                      trackEvent("preview_mode_select", { mode: mode.name });
-                    }}
-                    whileTap={{ scale: 0.97 }}
-                    whileHover={{ y: -2 }}
-                    aria-pressed={isActive}
-                    className={`rounded-2xl border px-4 py-3 text-center text-[10px] font-black tracking-[0.18em] transition sm:text-xs ${
-                      isActive
-                        ? "border-white bg-white text-black shadow-[0_0_25px_rgba(255,255,255,0.25)]"
-                        : "border-white/10 bg-black/45 text-zinc-300 hover:border-white/35 hover:bg-white/10"
-                    }`}
+            <div className="relative z-10 mt-3 rounded-2xl border border-white/10 bg-black/30 p-2">
+              <div className="mb-2 grid grid-cols-2 gap-2">
+                {[
+                  { label: "SHIRTS", key: "Shirt" },
+                  { label: "JOGGERS", key: "Jogger" },
+                ].map((group) => (
+                  <button
+                    key={group.key}
+                    type="button"
+                    className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-[10px] font-black tracking-[0.18em] text-zinc-300"
                   >
-                    {mode.name}
-                  </motion.button>
-                );
-              })}
+                    {group.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {dropProducts.map((mode, index) => {
+                  const isActive = preview.id === mode.id;
+
+                  return (
+                    <motion.button
+                      key={mode.id}
+                      onClick={() => {
+                        setPreviewIndex(index);
+                        trackEvent("preview_mode_select", { mode: mode.name });
+                      }}
+                      whileTap={{ scale: 0.96 }}
+                      whileHover={{ y: -1 }}
+                      aria-pressed={isActive}
+                      className={`group relative overflow-hidden rounded-xl border px-4 py-3 text-center text-[10px] font-black tracking-[0.16em] transition sm:text-xs ${
+                        isActive
+                          ? "border-white bg-white text-black shadow-[0_0_28px_rgba(255,255,255,0.28)]"
+                          : "border-white/10 bg-black/45 text-zinc-300 hover:border-white/35 hover:bg-white/10"
+                      }`}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="active-product-pill"
+                          className="absolute inset-0 bg-white"
+                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        />
+                      )}
+
+                      <span
+                        className={`relative z-10 ${isActive ? "text-black" : "text-zinc-200"}`}
+                      >
+                        {mode.name}
+                      </span>
+                    </motion.button>
+                  );
+                })}
+              </div>
             </div>
 
             <div className="mt-2 grid grid-cols-1 gap-1 text-xs text-zinc-300 sm:grid-cols-2">
