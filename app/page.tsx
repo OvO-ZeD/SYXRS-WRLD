@@ -267,7 +267,7 @@ export default function Home() {
 
       <section id="configurator" className="px-4 py-7 sm:px-6 sm:py-12">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2 lg:gap-8">
-          <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl sm:rounded-[3rem] md:p-8">
+          <div className="order-2 rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl sm:rounded-[3rem] md:p-8 lg:order-1">
             <p className="mb-4 text-xs font-bold tracking-[0.45em] text-zinc-500">
               CONFIGURATOR
             </p>
@@ -358,7 +358,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-4 backdrop-blur-2xl sm:rounded-[3rem] sm:p-6">
+          <div className="order-1 relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-4 backdrop-blur-2xl sm:rounded-[3rem] sm:p-6 lg:order-2">
             <div className="relative z-10 mb-5 flex items-center justify-between text-[10px] tracking-[0.22em] text-zinc-400 sm:text-xs">
               <span>{color.toUpperCase()}</span>
               <span>DROP 001 • SIZE {size}</span>

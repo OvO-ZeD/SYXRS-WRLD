@@ -17,10 +17,10 @@ function ShirtModel({ modelPath }: ShirtViewerProps) {
   const { scene } = useGLTF(modelPath);
 
   return (
-    <Center position={[0, 0.55, 0]}>
+    <Center position={[0, 0.2, 0]}>
       <primitive
         object={scene}
-        scale={0.75}
+        scale={0.78}
         rotation={[0, 0, 0]}
       />
     </Center>
@@ -29,7 +29,7 @@ function ShirtModel({ modelPath }: ShirtViewerProps) {
 
 export default function ShirtViewer({ modelPath }: ShirtViewerProps) {
   return (
-    <div className="relative h-[320px] w-full overflow-hidden rounded-[1.5rem] bg-black/30 sm:h-[420px] sm:rounded-[2rem] md:h-[620px]">
+    <div className="relative h-[460px] w-full overflow-hidden rounded-[1.5rem] bg-black/30 sm:h-[500px] sm:rounded-[2rem] md:h-[620px]">
       <Canvas camera={{ position: [0, 0, 8.5], fov: 28 }}>
         <Suspense
           fallback={
