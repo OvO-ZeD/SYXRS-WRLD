@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030303] text-white">
-      <nav className="fixed left-1/2 top-3 z-50 flex w-[94%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-black/50 px-3 py-2.5 backdrop-blur-2xl sm:top-5 sm:w-[92%] sm:px-5 sm:py-4">
+      <nav className="fixed left-1/2 top-3 z-50 flex w-[94%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-[#130f12]/75 px-3 py-2.5 backdrop-blur-2xl sm:top-5 sm:w-[92%] sm:px-5 sm:py-4">
         <a href="#" className="text-base font-black tracking-[0.3em] md:text-xl">
           SYXRS
         </a>
@@ -69,7 +69,7 @@ export default function Home() {
       </nav>
 
       <section className="relative flex min-h-[62vh] items-center px-4 py-12 sm:min-h-[78vh] sm:px-6 sm:py-18">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(66,0,180,0.42),transparent_35%),radial-gradient(circle_at_82%_28%,rgba(220,25,45,0.28),transparent_38%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.08),transparent_36%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(70,16,24,0.34),transparent_36%),radial-gradient(circle_at_82%_28%,rgba(143,14,25,0.28),transparent_40%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.06),transparent_38%)]" />
 
         <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-6 lg:grid-cols-[1.18fr_0.82fr] lg:gap-7">
           <motion.div
@@ -122,7 +122,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9 }}
-            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-4 backdrop-blur-2xl sm:rounded-[2.25rem] sm:p-5"
+            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#1a151a]/70 p-4 backdrop-blur-2xl sm:rounded-[2.25rem] sm:p-5"
           >
             <div className="relative z-10 flex items-center justify-between text-[10px] tracking-[0.22em] text-zinc-400 sm:text-xs">
               <span>LIVE PRODUCT PREVIEW</span>
@@ -160,7 +160,7 @@ export default function Home() {
                     current === 0 ? dropProducts.length - 1 : current - 1
                   )
                 }
-                className="rounded-full border border-white/20 bg-black/45 px-4 py-2 text-[10px] font-black tracking-[0.22em] text-zinc-200 transition hover:scale-105 hover:bg-white/20"
+                  className="rounded-full border border-white/20 bg-[#180f13]/80 px-4 py-2 text-[10px] font-black tracking-[0.22em] text-zinc-200 transition hover:scale-105 hover:bg-[#8f0e19]/35"
               >
                 PREV
               </button>
@@ -168,7 +168,7 @@ export default function Home() {
                 onClick={() =>
                   setPreviewIndex((current) => (current + 1) % dropProducts.length)
                 }
-                className="rounded-full border border-white/20 bg-black/45 px-4 py-2 text-[10px] font-black tracking-[0.22em] text-zinc-200 transition hover:scale-105 hover:bg-white/20"
+                  className="rounded-full border border-white/20 bg-[#180f13]/80 px-4 py-2 text-[10px] font-black tracking-[0.22em] text-zinc-200 transition hover:scale-105 hover:bg-[#8f0e19]/35"
               >
                 NEXT
               </button>
@@ -183,7 +183,7 @@ export default function Home() {
             (item) => (
               <div
                 key={item}
-                className="rounded-2xl border border-white/10 bg-white/[0.05] px-5 py-4 text-center backdrop-blur-2xl"
+                className="rounded-2xl border border-white/10 bg-[#19161b]/70 px-5 py-4 text-center backdrop-blur-2xl"
               >
                 <p className="text-xs font-black tracking-[0.28em] text-zinc-300">
                   {item}
@@ -196,7 +196,7 @@ export default function Home() {
 
       <section id="configurator" className="px-4 py-7 sm:px-6 sm:py-12">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2 lg:gap-8">
-          <div className="order-2 rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl sm:rounded-[3rem] md:p-8 lg:order-1">
+          <div className="order-2 rounded-[1.5rem] border border-white/10 bg-[#171317]/75 p-5 backdrop-blur-2xl sm:rounded-[3rem] md:p-8 lg:order-1">
             <p className="mb-4 text-xs font-bold tracking-[0.45em] text-zinc-500">
               CONFIGURATOR
             </p>
@@ -224,7 +224,7 @@ export default function Home() {
                     className={`rounded-full px-5 py-3 text-sm font-black transition ${
                       color === c
                         ? "bg-white text-black"
-                        : "border border-white/10 bg-white/10 text-white"
+                        : "border border-white/10 bg-[#22171c] text-white hover:bg-[#2a1a21]"
                     }`}
                   >
                     {c}
@@ -246,7 +246,7 @@ export default function Home() {
                     className={`h-11 w-14 rounded-full text-sm font-black transition sm:w-16 ${
                       size === s
                         ? "bg-white text-black"
-                        : "border border-white/10 bg-white/10 text-white"
+                        : "border border-white/10 bg-[#22171c] text-white hover:bg-[#2a1a21]"
                     }`}
                   >
                     {s}
@@ -265,7 +265,7 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="mt-5 rounded-[1.25rem] border border-white/10 bg-black/40 p-4 sm:rounded-[2rem] sm:p-5">
+            <div className="mt-5 rounded-[1.25rem] border border-white/10 bg-[#140f12]/90 p-4 sm:rounded-[2rem] sm:p-5">
               <div className="flex justify-between gap-5">
                 <span className="text-zinc-400">Selected</span>
                 <span className="font-black">
@@ -287,7 +287,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="order-1 relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-4 backdrop-blur-2xl sm:rounded-[3rem] sm:p-6 lg:order-2">
+          <div className="order-1 relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#171317]/75 p-4 backdrop-blur-2xl sm:rounded-[3rem] sm:p-6 lg:order-2">
             <div className="relative z-10 mb-5 flex items-center justify-between text-[10px] tracking-[0.22em] text-zinc-400 sm:text-xs">
               <span>{color.toUpperCase()}</span>
               <span>DROP 001 • SIZE {size}</span>
@@ -311,9 +311,9 @@ export default function Home() {
       </section>
 
       <section id="drop" className="relative px-4 py-7 sm:px-6 sm:py-12">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(66,0,180,0.32),transparent_34%),radial-gradient(circle_at_78%_45%,rgba(220,25,45,0.24),transparent_38%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(85,20,30,0.28),transparent_36%),radial-gradient(circle_at_78%_45%,rgba(143,14,25,0.22),transparent_40%)]" />
 
-        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-5 rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl sm:rounded-[3rem] md:p-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-5 rounded-[1.5rem] border border-white/10 bg-[#181318]/75 p-5 backdrop-blur-2xl sm:rounded-[3rem] md:p-8 lg:grid-cols-[0.9fr_1.1fr]">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -339,7 +339,7 @@ export default function Home() {
               {["PREVIEW LOCKED", "LIMITED RUN", "WRLD ACCESS"].map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-white/10 bg-black/35 p-4 text-center"
+                  className="rounded-2xl border border-white/10 bg-[#140f12]/80 p-4 text-center"
                 >
                   <p className="text-[10px] font-bold tracking-[0.22em] text-zinc-400 md:text-xs">
                     {item}
@@ -361,7 +361,7 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="flex min-h-[260px] items-center justify-center rounded-[2rem] border border-white/10 bg-black/40 p-6 sm:min-h-[320px] md:min-h-[360px]"
+            className="flex min-h-[260px] items-center justify-center rounded-[2rem] border border-white/10 bg-[#140f12]/85 p-6 sm:min-h-[320px] md:min-h-[360px]"
           >
             <div className="text-center">
               <p className="text-xs font-bold tracking-[0.45em] text-zinc-500">
@@ -382,7 +382,7 @@ export default function Home() {
       </section>
 
       <section id="access" className="px-4 py-7 sm:px-6 sm:py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-2xl md:flex-row md:items-center">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 rounded-[1.5rem] border border-white/10 bg-[#171317]/75 p-5 backdrop-blur-2xl md:flex-row md:items-center">
           <div>
             <p className="text-xs font-bold tracking-[0.45em] text-zinc-500">
               WRLD ACCESS
@@ -409,7 +409,7 @@ export default function Home() {
                 required
                 placeholder="ENTER EMAIL"
                 aria-label="Email address"
-                className="min-h-12 flex-1 rounded-full border border-white/10 bg-black/50 px-5 text-white outline-none"
+                className="min-h-12 flex-1 rounded-full border border-white/10 bg-[#120d10]/85 px-5 text-white outline-none"
               />
 
               <button
