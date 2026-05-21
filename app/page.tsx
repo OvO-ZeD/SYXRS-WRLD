@@ -76,7 +76,7 @@ export default function Home() {
         aria-hidden
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          transform: `translate3d(${pointer.x * 8}px, ${pointer.y * 8}px, 0)`,
+          transform: `translate3d(${pointer.x * 22}px, ${pointer.y * 22}px, 0)`,
         }}
       >
         <div className="bg-layer bg-layer-1" />
@@ -85,7 +85,7 @@ export default function Home() {
         aria-hidden
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          transform: `translate3d(${pointer.x * -14}px, ${pointer.y * -14}px, 0)`,
+          transform: `translate3d(${pointer.x * -34}px, ${pointer.y * -34}px, 0)`,
         }}
       >
         <div className="bg-layer bg-layer-2" />
@@ -94,7 +94,7 @@ export default function Home() {
         aria-hidden
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          transform: `translate3d(${pointer.x * 20}px, ${pointer.y * 20}px, 0)`,
+          transform: `translate3d(${pointer.x * 46}px, ${pointer.y * 46}px, 0)`,
         }}
       >
         <div className="bg-layer bg-layer-3" />
