@@ -129,7 +129,7 @@ export default function Home() {
               <span>DROP 001</span>
             </div>
 
-            <div className="relative mt-5 overflow-hidden rounded-[1.5rem] bg-black sm:rounded-[2rem]">
+            <div className="relative mt-5 overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key="primary-product-image"
@@ -147,7 +147,7 @@ export default function Home() {
                     unoptimized
                     quality={100}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 560px"
-                    className="h-[420px] w-full object-contain object-center bg-black transition duration-300 sm:h-[520px] md:h-[620px]"
+                    className="h-auto w-full object-cover object-center transition duration-300"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -173,10 +173,6 @@ export default function Home() {
                 NEXT
               </button>
             </div>
-
-            <p className="mt-3 text-xs tracking-[0.14em] text-zinc-400">
-              CURRENT PRODUCT PREVIEW • DROP 001
-            </p>
           </motion.div>
         </div>
       </section>
