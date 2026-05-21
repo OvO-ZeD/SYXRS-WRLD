@@ -30,7 +30,11 @@ function ShirtModel({ modelPath }: ShirtViewerProps) {
 export default function ShirtViewer({ modelPath }: ShirtViewerProps) {
   return (
     <div className="relative h-[460px] w-full overflow-hidden rounded-[1.5rem] bg-black/30 sm:h-[500px] sm:rounded-[2rem] md:h-[620px]">
-      <Canvas camera={{ position: [0, 0, 8.5], fov: 28 }}>
+      <Canvas
+        dpr={[1, 1.5]}
+        gl={{ antialias: false, powerPreference: "high-performance" }}
+        camera={{ position: [0, 0, 8.5], fov: 28 }}
+      >
         <Suspense
           fallback={
             <mesh>
