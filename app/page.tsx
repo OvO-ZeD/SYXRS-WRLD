@@ -62,6 +62,9 @@ export default function Home() {
         <div className="bg-layer bg-layer-4" />
       </div>
       <div aria-hidden className="pointer-events-none fixed inset-0 z-0 bg-spotlight" />
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0 hero-orbital" />
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0 hero-blob hero-blob-a" />
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0 hero-blob hero-blob-b" />
       <nav className="fixed left-1/2 top-3 z-50 flex w-[94%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full surface-panel bg-[#130f12]/75 px-3 py-2.5 backdrop-blur-2xl sm:top-5 sm:w-[92%] sm:px-5 sm:py-4">
         <a href="#" className="text-base font-black tracking-[0.3em] md:text-xl">
           SYXRS
