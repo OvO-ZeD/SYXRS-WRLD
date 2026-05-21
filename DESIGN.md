@@ -44,6 +44,12 @@
 - Ambient: slow background drift (`hero-parallax`) and subtle floating (`float-soft`).
 - Motion should feel deliberate and premium; avoid jitter or excessive bounce.
 
+### 7.1 Advanced 3D Motion Profile
+- Use cursor-reactive layered background planes (`bg-layer-1/2/3`) for non-static depth.
+- Apply opposing parallax speeds per layer for cinematic depth separation.
+- Keep rotations subtle (typically within 1.5°–3°) to preserve readability.
+- Always provide reduced-motion fallback via media query.
+
 ## 8) Do / Don’t
 ### Do
 - Keep red accents intentional and focused.
