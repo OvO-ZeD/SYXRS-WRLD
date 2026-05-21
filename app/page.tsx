@@ -82,7 +82,7 @@ export default function Home() {
         </a>
       </nav>
 
-      <section className="relative flex min-h-[62vh] items-center px-4 py-12 sm:min-h-[78vh] sm:px-6 sm:py-18">
+      <section className="relative flex min-h-[58vh] items-center px-4 py-9 sm:min-h-[72vh] sm:px-6 sm:py-12">
         <div className="absolute inset-0 hero-parallax bg-[radial-gradient(circle_at_22%_20%,rgba(70,16,24,0.34),transparent_36%),radial-gradient(circle_at_82%_28%,rgba(143,14,25,0.28),transparent_40%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.06),transparent_38%)]" />
 
         <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-6 lg:grid-cols-[1.18fr_0.82fr] lg:gap-7">
@@ -130,6 +130,21 @@ export default function Home() {
             <p className="mt-2 text-xs tracking-[0.16em] text-zinc-400">
               LIMITED FIRST RUN • ACCESS CLOSES SOON
             </p>
+
+            <div className="mt-3 flex max-w-md flex-wrap gap-2">
+              {[
+                "LIMITED RUNS",
+                "TORONTO BUILT",
+                "ATHLETIC STREETWEAR",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[10px] font-bold tracking-[0.18em] text-zinc-300"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
@@ -192,24 +207,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="-mt-2 px-4 py-2 sm:-mt-6 sm:px-6">
-        <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-3">
-          {["LIMITED RUNS", "TORONTO BUILT", "ATHLETIC STREETWEAR"].map(
-            (item) => (
-              <div
-                key={item}
-                className="rounded-2xl surface-panel depth-card float-soft bg-[#19161b]/70 px-5 py-4 text-center backdrop-blur-2xl"
-              >
-                <p className="text-xs font-black tracking-[0.28em] text-zinc-300">
-                  {item}
-                </p>
-              </div>
-            )
-          )}
-        </div>
-      </section>
-
-      <section id="configurator" className="px-4 py-7 sm:px-6 sm:py-12">
+      <section id="configurator" className="px-4 py-5 sm:px-6 sm:py-9">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2 lg:gap-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
