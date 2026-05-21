@@ -144,27 +144,13 @@ export default function Home() {
                     width={1200}
                     height={900}
                     priority
+                    unoptimized
+                    quality={100}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 560px"
-                    className="h-[260px] w-full object-cover object-center brightness-105 contrast-110 transition duration-700 sm:h-[320px] md:h-[380px]"
+                    className="h-[420px] w-full object-contain object-center bg-black transition duration-300 sm:h-[520px] md:h-[620px]"
                   />
                 </motion.div>
               </AnimatePresence>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
-
-              <div className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-[10px] font-black tracking-[0.2em] text-black sm:text-xs">
-                {PRIMARY_PRODUCT_TAG}
-              </div>
-
-              <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-xl font-black tracking-[0.1em] sm:text-2xl">
-                  {PRIMARY_PRODUCT_TITLE}
-                </h3>
-
-                <p className="mt-2 max-w-md text-xs leading-5 text-zinc-300 sm:text-sm">
-                  {PRIMARY_PRODUCT_DESCRIPTION}
-                </p>
-              </div>
             </div>
 
             <div className="mt-3 flex gap-2">
