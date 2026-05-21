@@ -249,17 +249,17 @@ footer {
 
 .bg-layer-1 {
   background:
-    radial-gradient(circle at 22% 28%, rgba(179, 30, 48, 0.34), transparent 42%),
-    radial-gradient(circle at 78% 24%, rgba(88, 24, 35, 0.32), transparent 48%);
-  filter: blur(22px);
+    radial-gradient(circle at 22% 28%, rgba(143, 14, 25, 0.26), transparent 44%),
+    radial-gradient(circle at 78% 24%, rgba(60, 18, 26, 0.24), transparent 50%);
+  filter: blur(20px);
 }
 
 .bg-layer-2 {
   background:
-    radial-gradient(circle at 70% 70%, rgba(143, 14, 25, 0.30), transparent 42%),
-    radial-gradient(circle at 28% 76%, rgba(255, 255, 255, 0.10), transparent 50%);
-  filter: blur(30px);
-  animation-duration: 24s;
+    radial-gradient(circle at 70% 70%, rgba(110, 18, 32, 0.24), transparent 44%),
+    radial-gradient(circle at 28% 76%, rgba(255, 255, 255, 0.06), transparent 52%);
+  filter: blur(26px);
+  animation-duration: 30s;
 }
 
 .bg-layer-3 {
@@ -271,50 +271,26 @@ footer {
       transparent 1px,
       transparent 62px
     );
-  opacity: 0.75;
-  animation-duration: 30s;
+  opacity: 0.4;
+  animation-duration: 40s;
 }
 
-.bg-layer-4 {
-  background:
-    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.12), transparent 34%),
-    radial-gradient(circle at 35% 70%, rgba(179, 30, 48, 0.22), transparent 42%);
-  filter: blur(18px);
-  animation-duration: 20s;
-}
+.bg-layer-4 { display: none; }
 
 .bg-spotlight {
   background: conic-gradient(from 120deg at 30% 50%, rgba(255,255,255,0.00), rgba(255,255,255,0.16), rgba(255,255,255,0.00));
   mix-blend-mode: screen;
-  opacity: 0.45;
-  animation: spotlightSweep 14s ease-in-out infinite alternate;
+  opacity: 0.26;
+  animation: spotlightSweep 24s ease-in-out infinite alternate;
 }
 
 .hero-orbital {
   background:
     radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06), transparent 38%),
     conic-gradient(from 0deg at 50% 50%, rgba(179,30,48,0.22), rgba(0,0,0,0) 35%, rgba(143,14,25,0.20) 70%, rgba(0,0,0,0));
-  opacity: 0.45;
-  filter: blur(10px);
-  animation: orbitalSpin 26s linear infinite;
-}
-
-.hero-blob {
-  inset: -16%;
-  position: absolute;
-  border-radius: 45% 55% 60% 40% / 42% 38% 62% 58%;
-  filter: blur(26px);
-  mix-blend-mode: screen;
-}
-
-.hero-blob-a {
-  background: radial-gradient(circle at 35% 35%, rgba(197, 34, 58, 0.42), rgba(0,0,0,0) 62%);
-  animation: blobDriftA 20s ease-in-out infinite alternate;
-}
-
-.hero-blob-b {
-  background: radial-gradient(circle at 60% 55%, rgba(255,255,255,0.16), rgba(0,0,0,0) 58%);
-  animation: blobDriftB 24s ease-in-out infinite alternate;
+  opacity: 0.22;
+  filter: blur(8px);
+  animation: orbitalSpin 40s linear infinite;
 }
 
 @keyframes bgDrift {
@@ -332,15 +308,6 @@ footer {
   100% { transform: rotate(360deg) scale(1.08); }
 }
 
-@keyframes blobDriftA {
-  0% { transform: translate3d(-8%, -6%, 0) scale(1); border-radius: 45% 55% 60% 40% / 42% 38% 62% 58%; }
-  100% { transform: translate3d(10%, 8%, 0) scale(1.12); border-radius: 58% 42% 46% 54% / 60% 45% 55% 40%; }
-}
-
-@keyframes blobDriftB {
-  0% { transform: translate3d(10%, -4%, 0) scale(1.02); border-radius: 52% 48% 40% 60% / 45% 58% 42% 55%; }
-  100% { transform: translate3d(-6%, 9%, 0) scale(1.14); border-radius: 40% 60% 58% 42% / 54% 42% 58% 46%; }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .hero-parallax,
@@ -353,8 +320,7 @@ footer {
     transform: none !important;
     transition: none !important;
   }
-  .hero-orbital,
-  .hero-blob {
+  .hero-orbital {
     animation: none !important;
     transform: none !important;
   }
