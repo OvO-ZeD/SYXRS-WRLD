@@ -13,6 +13,7 @@ const GOOGLE_EMAIL_ENTRY = "entry.1935803025";
 
 const colors = ["Obsidian", "Bone", "Anime Collab"] as const;
 const sizes = ["S", "M", "L", "XL", "XXL"];
+const PRIMARY_PRODUCT_IMAGE = "/images/drop-001-product.png";
 
 
 export default function Home() {
@@ -135,11 +136,11 @@ export default function Home() {
                   transition={{ duration: 0.35, ease: "easeOut" }}
                 >
                   <Image
-                    src={preview.previewImage}
+                    src={PRIMARY_PRODUCT_IMAGE}
                     alt={preview.previewTitle}
                     width={1200}
                     height={900}
-                    className="h-[200px] w-full object-cover brightness-110 contrast-110 transition duration-700 sm:h-[280px] md:h-[320px]"
+                    className="h-[260px] w-full object-cover object-center brightness-105 contrast-110 transition duration-700 sm:h-[320px] md:h-[380px]"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -182,75 +183,9 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="relative z-10 mt-2 rounded-2xl border border-white/10 bg-black/30 p-2">
-              <div className="mb-2 grid grid-cols-2 gap-2">
-                {[
-                  { label: "SHIRTS", key: "Shirt" },
-                  { label: "JOGGERS", key: "Jogger" },
-                ].map((group) => (
-                  <button
-                    key={group.key}
-                    type="button"
-                    className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-[10px] font-black tracking-[0.18em] text-zinc-300"
-                  >
-                    {group.label}
-                  </button>
-                ))}
-              </div>
-
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {dropProducts.map((mode, index) => {
-                  const isActive = preview.id === mode.id;
-
-                  return (
-                    <motion.button
-                      key={mode.id}
-                      onClick={() => {
-                        setPreviewIndex(index);
-                        trackEvent("preview_mode_select", { mode: mode.name });
-                      }}
-                      whileTap={{ scale: 0.96 }}
-                      whileHover={{ y: -1 }}
-                      aria-pressed={isActive}
-                      className={`group relative overflow-hidden rounded-xl border px-4 py-3 text-center text-[10px] font-black tracking-[0.16em] transition sm:text-xs ${
-                        isActive
-                          ? "border-white bg-white text-black shadow-[0_0_28px_rgba(255,255,255,0.28)]"
-                          : "border-white/10 bg-black/45 text-zinc-300 hover:border-white/35 hover:bg-white/10"
-                      }`}
-                    >
-                      {isActive && (
-                        <motion.span
-                          layoutId="active-product-pill"
-                          className="absolute inset-0 bg-white"
-                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                        />
-                      )}
-
-                      <span
-                        className={`relative z-10 ${isActive ? "text-black" : "text-zinc-200"}`}
-                      >
-                        {mode.name}
-                      </span>
-                    </motion.button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="mt-2 grid grid-cols-1 gap-1 text-xs text-zinc-300 sm:grid-cols-2">
-              <p>
-                <span className="text-zinc-500">Product:</span> {preview.name}
-              </p>
-              <p>
-                <span className="text-zinc-500">Category:</span> {preview.category}
-              </p>
-              <p>
-                <span className="text-zinc-500">Fit:</span> {preview.fit}
-              </p>
-              <p>
-                <span className="text-zinc-500">Price:</span> ${preview.price} CAD
-              </p>
-            </div>
+            <p className="mt-3 text-xs tracking-[0.14em] text-zinc-400">
+              CURRENT PRODUCT PREVIEW • DROP 001
+            </p>
           </motion.div>
         </div>
       </section>
