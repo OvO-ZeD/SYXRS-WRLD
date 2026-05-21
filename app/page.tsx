@@ -2,7 +2,7 @@
 
 import ShirtViewer from "./components/ShirtViewer";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import { dropProducts } from "./data/products";
 
@@ -25,29 +25,6 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [sizeGuide, setSizeGuide] = useState(false);
   const [previewIndex, setPreviewIndex] = useState(0);
-  const [pointer, setPointer] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (media.matches) return;
-
-    let raf = 0;
-    const onMove = (event: MouseEvent) => {
-      const x = (event.clientX / window.innerWidth - 0.5) * 2;
-      const y = (event.clientY / window.innerHeight - 0.5) * 2;
-
-      cancelAnimationFrame(raf);
-      raf = window.requestAnimationFrame(() => {
-        setPointer({ x, y });
-      });
-    };
-
-    window.addEventListener("mousemove", onMove, { passive: true });
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("mousemove", onMove);
-    };
-  }, []);
 
   const preview = dropProducts[previewIndex];
 
@@ -72,33 +49,19 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030303] text-white">
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          transform: `translate3d(${pointer.x * 22}px, ${pointer.y * 22}px, 0)`,
-        }}
-      >
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
         <div className="bg-layer bg-layer-1" />
       </div>
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          transform: `translate3d(${pointer.x * -34}px, ${pointer.y * -34}px, 0)`,
-        }}
-      >
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
         <div className="bg-layer bg-layer-2" />
       </div>
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          transform: `translate3d(${pointer.x * 46}px, ${pointer.y * 46}px, 0)`,
-        }}
-      >
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
         <div className="bg-layer bg-layer-3" />
       </div>
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
+        <div className="bg-layer bg-layer-4" />
+      </div>
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0 bg-spotlight" />
       <nav className="fixed left-1/2 top-3 z-50 flex w-[94%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full surface-panel bg-[#130f12]/75 px-3 py-2.5 backdrop-blur-2xl sm:top-5 sm:w-[92%] sm:px-5 sm:py-4">
         <a href="#" className="text-base font-black tracking-[0.3em] md:text-xl">
           SYXRS

@@ -275,6 +275,14 @@ footer {
   animation-duration: 30s;
 }
 
+.bg-layer-4 {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.12), transparent 34%),
+    radial-gradient(circle at 35% 70%, rgba(179, 30, 48, 0.22), transparent 42%);
+  filter: blur(18px);
+  animation-duration: 20s;
+}
+
 .bg-spotlight {
   background: conic-gradient(from 120deg at 30% 50%, rgba(255,255,255,0.00), rgba(255,255,255,0.16), rgba(255,255,255,0.00));
   mix-blend-mode: screen;
